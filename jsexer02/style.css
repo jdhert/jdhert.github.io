@@ -1,0 +1,12 @@
+#main{
+    border: 1px solid #aaa;
+    width: 400px;
+    min-height: 300px;
+    padding: 25px;
+}
+
+input{
+    font-size: 1.5em;
+    padding: 5px;
+    text-align: right;
+}

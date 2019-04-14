@@ -4,7 +4,7 @@ var images = [];
 
 images.push("qwe.jpg");
 images.push("qwe1.jpg");
-images.push("qwe2.jpg");
+images.push("qwe2.JPG");
 
 currentImage = 0;
 

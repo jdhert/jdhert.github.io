@@ -21,7 +21,7 @@ a#twitter:hover{
 }
 .img{
     position: relative;
-    background-image: url(./abc.jpg);
+    background-image: url('abc.jpg');
     height: 100vh;
     background-size: cover;
 }

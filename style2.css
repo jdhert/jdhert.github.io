@@ -1,0 +1,75 @@
+    
+#main {
+    border:1px solid #aaa;
+    width:600px;
+    min-height:500px;
+    margin:auto;
+}
+h1{
+    text-align: center;
+}
+#entry{
+    font-size:1.2em;
+}
+#entry div{
+    text-align: right;
+    width:500px;
+    margin:auto;
+}
+#entry div input{
+    padding:5px;
+    width:300px;
+    margin-bottom:5px;
+}
+#entry div button{
+    padding:5px;
+    min-width:100px;
+}
+#signature{
+    text-align:center;
+}
+#enterName1{
+    margin-left: 650px;
+}
+#enterName{
+    height: 100px;
+    position: relative;
+    animation-name: example;
+    animation-duration: 2s;
+    animation-delay: 1s;
+}
+@keyframes example {
+    0%   {background-color:red; left:0px; top:0px;}
+    25%  {background-color:yellow; left:200px; top:0px;}
+    50%  {background-color:blue; left:200px; top:200px;}
+    75%  {background-color:green; left:0px; top:200px;}
+    100% {background-color:red; left:0px; top:0px;}
+  }
+#datax  tr:nth-child(odd){
+    background-color:#aff;
+}
+
+#datax tr:nth-child(even){
+    background-color:#faf;
+}
+#datax{
+    text-align: center;
+}
+#datax input{
+    text-align: center;
+    background-color: inherit;
+}
+
+.text-center{
+    text-align:center;
+}
+
+svg rect{
+    stroke: black;
+    stroke-width: 1px; 
+    fill: rgb(124, 221, 228);
+}
+
+svg text{
+    font-size: 34px;
+}

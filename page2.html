@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style2.css">
+    <script src="app2.js"></script>
+</head>
+<body>
+        <div id="enterName1">
+        <svg id="enterName">
+                <rect width="75" height="75" x="5" y="15"></rect>
+                <text x="25" y="70" >박</text>
+                <rect width="75" height="75" x="105" y="15"></rect>
+                <text x="125" y="70" >세</text>
+                <rect width="75" height="75" x="205" y="15"></rect>
+                <text x="225" y="70" >한</text>
+            </svg><br>
+            <h3>International Companny</h3>
+        </div>
+    <div id="main">
+        <h1>Product Information </h1>
+        <div id="entry">
+            <div>Name <input type="text" id="name" /></div>
+            <div>Price<input type="text" id="price"/></div>
+            <div> <button id="save">Save</button></div>
+        </div>
+        <hr/>
+
+        <table width="100%" border="1">
+            <tr>
+                <th><button id="idb">▼ ID</button></th>
+                <th><button id="nameb">▼ NAME</button></th>
+                <th><button id="priceb">▼ PRICE</button></th>
+            </tr>
+            <tbody id="datax" onkeydown="enterCheck(event)">
+              
+            </tbody>
+        </table>
+    </div>
+    <div id="signature">
+    <h3>&copy;2019. 박세한™</h3></div>
+</body>
+</html>

@@ -48,11 +48,13 @@ function showData() {
         td1 = document.createElement("td");
         td2 = document.createElement("td");
         td3 = document.createElement("td");
+        idIncome = document.createElement("input");
         nameIncome = document.createElement("input");
         priceIncome = document.createElement("input");
-        td1.innerText = data[i].id;
+        idIncome.value = data[i].id;
         nameIncome.value = data[i].name;
         priceIncome.value = data[i].price;
+        td1.append(idIncome);
         td2.append(nameIncome);
         td3.append(priceIncome);
         mtr.append(td1);
@@ -77,14 +79,14 @@ function save1() {
 
 function exchid(){
     if(prmid == 1){
-        prmid = -1;
+        prmid = prmid * -1;
         idb.innerText="▲ ID";
         data.sort(function(a, b){
             return b.id - a.id;
         });
     }
     else{
-        prmid = 1;
+        prmid = prmid * -1;
         idb.innerText="▼ ID";
         data.sort(function(a, b){
             return a.id - b.id;
@@ -94,14 +96,14 @@ function exchid(){
 }
 function exchpc(){
     if(prmpc == 1){
-        prmpc = -1;
+        prmpc =  prmpc * -1;
         priceb.innerText="▲ PRICE";
         data.sort(function(a, b){
             return b.price - a.price;
         });
     }
     else{
-        prmpc = 1;
+        prmpc = prmpc * -1;
         priceb.innerText="▼ PRICE";
         data.sort(function(a, b){
             return a.price - b.price;
@@ -111,14 +113,14 @@ function exchpc(){
 }
 function exchnm() {
     if(prmnm == 1){
-        prmnm = -1;
+        prmnm = prmnm * -1;
         nameb.innerText="▲ NAME";
         data.sort(function(a, b){
             return a.name > b.name ? -1: a.name < b.name ? 1:0;
         });
     }
     else{
-        prmnm = 1;
+        prmnm = prmnm * -1;
         nameb.innerText="▼ NAME";
         data.sort(function(a, b){
             return a.name < b.name ? -1: a.name > b.name ? 1:0;
@@ -128,11 +130,17 @@ function exchnm() {
 }
 
 function Manipulate(){
-    for(i = 0; i < data.length; i++){
+    for(var i = 0; i < data.length; i++){
+        idManipu = document.querySelector(
+            '#datax tr:nth-child('+(i+1)+') td:nth-child(1) input '
+        );
         nameManipu = document.querySelector(
-            "#datax tr:nth-child("+(i+1)+") td:nth-child(2) input");
+            '#datax tr:nth-child('+(i+1)+') td:nth-child(2) input'
+        );
         priceManipu = document.querySelector(
-            "#datax tr:nth-child("+(i+1)+") td:nth-child(3) input");
+            '#datax tr:nth-child('+(i+1)+') td:nth-child(3) input'
+        );
+        data[i].id = idManipu.value
         data[i].name = nameManipu.value;
         data[i].price = priceManipu.value;
     }

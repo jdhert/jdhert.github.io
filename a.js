@@ -137,7 +137,7 @@ function draw() {
       dy = -dy;
     }
     else {
-      lives--;
+      life--;
       if(!life) {
         alert("GAME OVER");
         document.location.reload();

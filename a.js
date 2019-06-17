@@ -18,7 +18,7 @@ var brickPadding = 10;
 var brickOffsetTop = 30;
 var brickOffsetLeft = 30;
 var score = 0;
-var lives = 5;
+var life = 5;
 
 var bricks = [];
 for(var c=0; c<brickColumnCount; c++) {
@@ -66,7 +66,7 @@ function collisionDetection() {
           b.status = 0;
           score++;
           if(score == brickRowCount*brickColumnCount) {
-            alert("YOU WIN!");
+            alert("YOU WIN!!!");
             document.location.reload();
           }
         }
@@ -109,12 +109,12 @@ function drawBricks() {
 function drawScore() {
   ctx.font = "16px Arial";
   ctx.fillStyle = "#0B3B39";
-  ctx.fillText("점수: "+score, 8, 20);
+  ctx.fillText("점수: "+score, 8, 30);
 }
 function drawLives() {
   ctx.font = "16px Arial";
   ctx.fillStyle = "#0B3B2E";
-  ctx.fillText("목숨: "+lives, canvas.width-65, 20);
+  ctx.fillText("목숨: "+life, canvas.width-65, 30);
 }
 
 function draw() {
@@ -138,7 +138,7 @@ function draw() {
     }
     else {
       lives--;
-      if(!lives) {
+      if(!life) {
         alert("GAME OVER");
         document.location.reload();
       }

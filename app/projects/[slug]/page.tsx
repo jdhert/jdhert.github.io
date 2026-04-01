@@ -131,6 +131,66 @@ export default async function ProjectDetailPage({
                 </div>
               </div>
 
+              <div className="grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
+                <div className="overflow-hidden rounded-[2rem] border border-white/40 bg-white/40 shadow-[0_30px_80px_rgba(0,0,0,0.08)]">
+                  {project.imageSrc ? (
+                    <div className="relative">
+                      <img
+                        src={project.imageSrc}
+                        alt={project.imageAlt ?? `${project.title} 프로젝트 이미지`}
+                        className="block h-full w-full object-cover"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent px-6 py-6">
+                        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/70">
+                          Project Preview
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-white/90">
+                          실제 화면을 통해 프로젝트 분위기와 인터페이스 구성을 빠르게 확인할 수 있습니다.
+                        </p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="relative flex min-h-[320px] flex-col justify-end overflow-hidden bg-gradient-to-br from-primary/20 via-white/40 to-accent/15 p-8">
+                      <div className="absolute inset-0 opacity-70">
+                        <div className="absolute -left-12 top-10 h-36 w-36 rounded-full bg-primary/20 blur-3xl" />
+                        <div className="absolute right-0 top-1/3 h-44 w-44 rounded-full bg-accent/15 blur-3xl" />
+                        <div className="absolute bottom-0 left-1/3 h-32 w-32 rounded-full bg-chart-3/20 blur-3xl" />
+                      </div>
+                      <div className="relative">
+                        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-foreground/55">
+                          Project Preview
+                        </p>
+                        <h2 className="mt-3 text-2xl font-semibold text-foreground">
+                          {project.title}
+                        </h2>
+                        <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
+                          아직 대표 스크린샷이 없는 프로젝트입니다. 추후 실제 화면이나 흐름도를 추가하면 더 풍부하게 보여줄 수 있습니다.
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <div className="rounded-[2rem] border border-white/40 bg-gradient-to-br from-white/45 to-white/20 p-6 lg:p-7">
+                  <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-foreground/60">
+                    한눈에 보기
+                  </p>
+                  <p className="text-base leading-relaxed text-muted-foreground">
+                    {project.summary}
+                  </p>
+                  <div className="mt-6 space-y-4">
+                    {project.details.map((detail) => (
+                      <div key={detail.label} className="rounded-2xl bg-white/45 px-4 py-4">
+                        <p className="text-sm font-semibold text-foreground">{detail.label}</p>
+                        <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                          {detail.text}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
               <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
                 <div className="rounded-3xl border border-white/40 bg-white/35 p-6">
                   <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-foreground/60">

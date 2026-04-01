@@ -15,6 +15,8 @@ export interface Project {
   tech: string[]
   overview: string
   details: ProjectDetailItem[]
+  imageSrc?: string
+  imageAlt?: string
   github: string
   size: "large" | "medium"
 }
@@ -44,6 +46,8 @@ export const projects: Project[] = [
         text: "유지보수 효율성과 정보 접근성을 높일 수 있는 자동화 방향을 프로젝트로 구체화했습니다.",
       },
     ],
+    imageSrc: "/projects/cs-chatbot-detail.png",
+    imageAlt: "CS-ChatBot 프로젝트 화면",
     github: "https://github.com/jdhert/CS-ChatBot",
     size: "large",
   },
@@ -71,6 +75,8 @@ export const projects: Project[] = [
         text: "서비스 구조 설계부터 API 연동까지 전 과정을 경험하며 풀스택 이해도를 넓혔습니다.",
       },
     ],
+    imageSrc: "/projects/scenehive-detail.png",
+    imageAlt: "SceneHive 프로젝트 화면",
     github: "https://github.com/jdhert/SceneHive",
     size: "medium",
   },

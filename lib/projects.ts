@@ -5,6 +5,11 @@ export interface ProjectDetailItem {
   text: string
 }
 
+export interface ProjectHighlight {
+  label: string
+  value: string
+}
+
 export interface Project {
   slug: string
   title: string
@@ -15,6 +20,7 @@ export interface Project {
   tech: string[]
   overview: string
   details: ProjectDetailItem[]
+  highlights: ProjectHighlight[]
   imageSrc?: string
   imageAlt?: string
   github: string
@@ -46,6 +52,20 @@ export const projects: Project[] = [
         text: "유지보수 효율성과 정보 접근성을 높일 수 있는 자동화 방향을 프로젝트로 구체화했습니다.",
       },
     ],
+    highlights: [
+      {
+        label: "프로젝트 성격",
+        value: "운영 문의 대응을 줄이기 위한 자동화형 챗봇 프로젝트",
+      },
+      {
+        label: "집중 포인트",
+        value: "FAQ 응답 흐름과 지식 접근 경로를 빠르게 구성하는 데 집중했습니다.",
+      },
+      {
+        label: "기대 효과",
+        value: "반복 문의 대응 시간을 줄이고 운영 효율을 높일 수 있는 방향을 검증했습니다.",
+      },
+    ],
     imageSrc: "/projects/cs-chatbot-detail.png",
     imageAlt: "CS-ChatBot 프로젝트 화면",
     github: "https://github.com/jdhert/CS-ChatBot",
@@ -75,6 +95,20 @@ export const projects: Project[] = [
         text: "서비스 구조 설계부터 API 연동까지 전 과정을 경험하며 풀스택 이해도를 넓혔습니다.",
       },
     ],
+    highlights: [
+      {
+        label: "프로젝트 성격",
+        value: "화면과 서버를 함께 설계한 end-to-end 웹 서비스 프로젝트",
+      },
+      {
+        label: "집중 포인트",
+        value: "프론트엔드와 백엔드 사이의 인터페이스를 일관되게 맞추는 데 집중했습니다.",
+      },
+      {
+        label: "기대 효과",
+        value: "서비스 구조 설계부터 API 연동까지 전체 흐름을 경험하며 이해도를 넓혔습니다.",
+      },
+    ],
     imageSrc: "/projects/scenehive-detail.png",
     imageAlt: "SceneHive 프로젝트 화면",
     github: "https://github.com/jdhert/SceneHive",
@@ -102,6 +136,20 @@ export const projects: Project[] = [
       {
         label: "의미",
         text: "도메인 구조와 상호작용 기능을 함께 설계하며 커뮤니티 서비스 개발 경험을 쌓았습니다.",
+      },
+    ],
+    highlights: [
+      {
+        label: "프로젝트 성격",
+        value: "반려동물 사용자 중심의 커뮤니티 플랫폼 프로젝트",
+      },
+      {
+        label: "집중 포인트",
+        value: "게시글, 댓글, 좋아요가 자연스럽게 연결되는 상호작용 구조를 설계했습니다.",
+      },
+      {
+        label: "기대 효과",
+        value: "커뮤니티 서비스에서 필요한 핵심 도메인과 기능 흐름을 실전처럼 다뤄볼 수 있었습니다.",
       },
     ],
     github: "https://github.com/jdhert/Pet-Public",

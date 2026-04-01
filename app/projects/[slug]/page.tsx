@@ -172,11 +172,11 @@ export default async function ProjectDetailPage({
                     )}
                   </div>
 
-                  <div className="rounded-[2rem] border border-white/40 bg-white/35 p-6">
-                    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-foreground/60">
+                  <div className="rounded-[2rem] border border-white/45 bg-white/50 p-6 shadow-[0_16px_40px_rgba(255,255,255,0.18)]">
+                    <p className="mb-4 text-sm font-semibold text-foreground/70">
                       프로젝트 개요
                     </p>
-                    <p className="text-base leading-relaxed text-muted-foreground">
+                    <p className="text-[17px] leading-8 font-medium text-foreground/85">
                       {project.overview}
                     </p>
                   </div>
@@ -185,12 +185,12 @@ export default async function ProjectDetailPage({
                     {project.highlights.map((highlight) => (
                       <div
                         key={highlight.label}
-                        className="rounded-[1.75rem] border border-white/35 bg-gradient-to-br from-white/45 to-white/25 p-5"
+                        className="rounded-[1.75rem] border border-white/45 bg-gradient-to-br from-white/60 to-white/35 p-5 shadow-[0_16px_40px_rgba(255,255,255,0.16)]"
                       >
-                        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-foreground/55">
+                        <p className="text-sm font-semibold text-foreground/70">
                           {highlight.label}
                         </p>
-                        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                        <p className="mt-3 text-[15px] leading-7 font-medium text-foreground/80">
                           {highlight.value}
                         </p>
                       </div>

@@ -21,7 +21,7 @@ export default function PortfolioPage() {
       {/* Mobile Navigation */}
       <MobileNavigation />
       
-      <div className="relative z-10 min-h-screen px-6 py-12 lg:px-24 lg:py-0">
+      <div className="relative z-10 min-h-screen px-6 pb-12 pt-28 lg:px-24 lg:py-0">
         <div className="mx-auto max-w-screen-xl lg:flex lg:justify-between lg:gap-16">
           {/* Left Column - Fixed on Desktop */}
           <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[45%] lg:flex-col lg:justify-between lg:py-24">

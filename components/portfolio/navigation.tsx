@@ -88,7 +88,7 @@ export function MobileNavigation() {
     <>
       {/* Mobile Header */}
       <header className="fixed top-0 left-0 right-0 z-50 lg:hidden">
-        <div className="glass px-6 py-4 flex items-center justify-between">
+        <div className="glass flex items-center justify-between px-6 pb-4 pt-[calc(env(safe-area-inset-top)+1rem)]">
           <a href="#" className="text-lg font-bold text-gradient">
             {portfolio.name}
           </a>

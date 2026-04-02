@@ -38,7 +38,7 @@ export async function generateMetadata({
       title: `${project.title} | ${portfolio.name}`,
       description: project.summary,
       url: `${portfolio.siteUrl}/projects/${project.slug}/`,
-      siteName: `${portfolio.name} Resume`,
+      siteName: `${portfolio.name} 포트폴리오`,
       locale: "ko_KR",
       type: "article",
     },
@@ -101,7 +101,7 @@ export default async function ProjectDetailPage({
                 <div className="space-y-5">
                   <div className={`inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 ${project.bgColor}`}>
                     <Icon className={`w-4 h-4 ${project.color}`} />
-                    <span className="text-sm font-medium text-foreground/80">Project Detail</span>
+                    <span className="text-sm font-medium text-foreground/80">프로젝트 상세</span>
                   </div>
 
                   <div className="space-y-3">
@@ -142,8 +142,8 @@ export default async function ProjectDetailPage({
                           className="block h-full w-full object-cover object-top"
                         />
                         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent px-6 py-6">
-                          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/70">
-                            Project Preview
+                          <p className="text-xs font-semibold tracking-[0.16em] text-white/70">
+                            프로젝트 미리보기
                           </p>
                         </div>
                       </div>
@@ -155,8 +155,8 @@ export default async function ProjectDetailPage({
                           <div className="absolute bottom-0 left-1/3 h-32 w-32 rounded-full bg-chart-3/20 blur-3xl" />
                         </div>
                         <div className="relative">
-                          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-foreground/55">
-                            Project Preview
+                          <p className="text-xs font-semibold tracking-[0.16em] text-foreground/55">
+                            프로젝트 미리보기
                           </p>
                           <h2 className="mt-3 text-2xl font-semibold text-foreground">
                             {project.title}
@@ -196,25 +196,27 @@ export default async function ProjectDetailPage({
                 </div>
 
                 <div className="h-fit rounded-[2rem] border border-white/40 bg-gradient-to-br from-white/45 to-white/20 p-6 lg:p-7">
-                  <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-foreground/60">
-                    한눈에 보기
+                  <p className="mb-3 text-sm font-semibold text-foreground/70">
+                    이 프로젝트에서 보여준 점
                   </p>
                   <p className="text-base leading-relaxed text-muted-foreground">
-                    {project.summary}
+                    {project.cardPoint}
                   </p>
                   <div className="mt-6 space-y-4">
-                    {project.details.map((detail) => (
-                      <div key={detail.label} className="rounded-2xl bg-white/45 px-4 py-4">
-                        <p className="text-sm font-semibold text-foreground">{detail.label}</p>
-                        <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                          {detail.text}
+                    {project.strengths.map((strength, index) => (
+                      <div key={strength} className="rounded-2xl bg-white/45 px-4 py-4">
+                        <p className="text-xs font-semibold tracking-[0.16em] text-foreground/55">
+                          핵심 포인트 {index + 1}
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-foreground/80">
+                          {strength}
                         </p>
                       </div>
                     ))}
                   </div>
 
                   <div className="mt-6 rounded-2xl border border-white/35 bg-white/30 p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-foreground/55">
+                    <p className="text-xs font-semibold tracking-[0.16em] text-foreground/55">
                       바로가기
                     </p>
                     <a
@@ -237,8 +239,8 @@ export default async function ProjectDetailPage({
 
           <section className="space-y-4">
             <div className="flex items-center justify-between gap-4">
-              <h2 className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">
-                프로젝트 설명
+              <h2 className="text-sm font-semibold tracking-[0.16em] text-primary">
+                구현 포인트
               </h2>
               <span className="text-sm text-muted-foreground">
                 {project.details.length}개의 핵심 포인트
@@ -250,7 +252,7 @@ export default async function ProjectDetailPage({
                 <BentoCard key={detail.label} className="h-full p-6">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between gap-3">
-                      <span className="text-xs font-semibold uppercase tracking-[0.24em] text-foreground/50">
+                      <span className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
                         0{index + 1}
                       </span>
                       <div className={`h-2.5 w-2.5 rounded-full ${project.bgColor.replace("/10", "")}`} />

@@ -52,10 +52,10 @@ export function ContactSection() {
       {/* Footer */}
       <footer className="mt-24 pt-8 border-t border-border/50 text-center">
         <p className="text-sm text-muted-foreground">
-          Designed & Built by <span className="text-foreground font-medium">{portfolio.name}</span>
+          <span className="text-foreground font-medium">{portfolio.name}</span>이 설계하고 구현했습니다
         </p>
         <p className="text-xs text-muted-foreground/60 mt-2">
-          Built with Next.js & Tailwind CSS
+          Next.js와 Tailwind CSS로 제작했습니다
         </p>
       </footer>
     </section>

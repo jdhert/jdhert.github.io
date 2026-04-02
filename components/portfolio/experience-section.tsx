@@ -5,20 +5,20 @@ import { Building2, Calendar, ArrowUpRight } from "lucide-react"
 
 const achievements = [
   {
-    title: "운영 이슈 분석 및 장애 대응",
-    description: "사용자 문의와 운영 상황을 바탕으로 원인을 빠르게 좁히고 문제를 해결했습니다.",
+    title: "운영 문의를 장애 대응 단서로 전환",
+    description: "사용자 문의와 운영 상황을 함께 보며 문제 원인을 빠르게 좁히고 대응 흐름을 정리했습니다.",
   },
   {
-    title: "Deadlock / 트랜잭션 문제 개선",
-    description: "운영 중 발생한 동시성 이슈를 분석하고 구조와 흐름을 정리해 안정성을 높였습니다.",
+    title: "Deadlock / 트랜잭션 이슈 분석",
+    description: "운영 중 발생한 동시성 문제를 추적하고 처리 순서와 구조를 점검하며 안정성을 높였습니다.",
   },
   {
-    title: "성능 저하 구간 최적화",
-    description: "느린 구간을 확인하고 DB 쿼리 튜닝을 통해 응답 흐름을 개선했습니다.",
+    title: "느린 구간 쿼리 튜닝",
+    description: "성능 저하가 체감되는 구간을 찾아 DB 쿼리와 조회 흐름을 손보며 응답 흐름을 개선했습니다.",
   },
   {
-    title: "레거시 구조 리팩토링",
-    description: "기존 코드를 분석해 유지보수가 쉬운 구조로 정리하고 개선 작업을 이어갔습니다.",
+    title: "레거시 코드 구조 정리",
+    description: "기존 코드를 분석해 유지보수가 쉬운 구조로 정리하고 이후 개선 작업이 이어질 수 있게 만들었습니다.",
   },
 ]
 
@@ -58,9 +58,30 @@ export function ExperienceSection() {
               ))}
             </div>
           </div>
+          <div className="grid gap-3 sm:grid-cols-3">
+            <div className="rounded-2xl bg-white/45 px-4 py-4">
+              <p className="text-xs font-semibold tracking-[0.16em] text-foreground/55">담당 범위</p>
+              <p className="mt-2 text-sm leading-6 text-foreground/80">
+                그룹웨어 유지보수, 운영 이슈 분석, 사용자 문의 기반 개선
+              </p>
+            </div>
+            <div className="rounded-2xl bg-white/45 px-4 py-4">
+              <p className="text-xs font-semibold tracking-[0.16em] text-foreground/55">주요 문제</p>
+              <p className="mt-2 text-sm leading-6 text-foreground/80">
+                장애 대응, Deadlock, 트랜잭션 이슈, 느린 조회 구간
+              </p>
+            </div>
+            <div className="rounded-2xl bg-white/45 px-4 py-4">
+              <p className="text-xs font-semibold tracking-[0.16em] text-foreground/55">기여 방식</p>
+              <p className="mt-2 text-sm leading-6 text-foreground/80">
+                문제를 좁히고 원인을 정리한 뒤 구조와 흐름을 개선했습니다.
+              </p>
+            </div>
+          </div>
           <p className="text-sm leading-relaxed text-muted-foreground">
             그룹웨어 플랫폼 유지보수와 운영을 담당하며, 최대 3,300명 규모 사용자 환경에서 발생하는
             장애 대응, 성능 저하 분석, Deadlock 및 트랜잭션 이슈 개선, 레거시 코드 리팩토링을 수행했습니다.
+            단순 수정에 그치지 않고 원인 분석과 재발 방지 관점으로 접근한 경험이 강점입니다.
           </p>
         </div>
       </BentoCard>

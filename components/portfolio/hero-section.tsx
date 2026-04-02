@@ -22,7 +22,7 @@ export function HeroSection() {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm font-medium text-foreground/80">
           <Sparkles className="w-4 h-4 text-primary" />
-          <span>백엔드 포지션에 열려 있습니다</span>
+          <span>운영 이슈 해결 중심의 백엔드 개발자</span>
         </div>
 
         {/* Name */}
@@ -32,14 +32,29 @@ export function HeroSection() {
         
         {/* Title */}
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground/90">
-          Backend Developer
+          서비스 안정성을 높이는 백엔드 개발자
         </h2>
         
         {/* Description */}
         <p className="text-lg sm:text-xl text-muted-foreground max-w-xl leading-relaxed">
-          {portfolio.headline}입니다. 최대 3,300명 규모 그룹웨어 환경에서 운영 이슈를 분석하고,
-          장애 대응과 성능 개선으로 서비스 안정성을 높여왔습니다.
+          {portfolio.headline}입니다. {portfolio.summary}
         </p>
+
+        <div className="grid gap-3 sm:grid-cols-3">
+          {portfolio.keyFacts.map((fact) => (
+            <div
+              key={fact.label}
+              className="rounded-2xl border border-white/40 bg-white/45 px-4 py-4 shadow-[0_12px_30px_rgba(255,255,255,0.18)]"
+            >
+              <p className="text-xs font-semibold tracking-[0.16em] text-foreground/55">
+                {fact.label}
+              </p>
+              <p className="mt-2 text-sm leading-6 text-foreground/80">
+                {fact.value}
+              </p>
+            </div>
+          ))}
+        </div>
 
         <ul className="space-y-2 text-sm sm:text-base text-muted-foreground">
           {portfolio.heroHighlights.map((item) => (
@@ -99,7 +114,7 @@ export function HeroSection() {
       
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2">
-        <span className="text-sm text-muted-foreground">Scroll</span>
+        <span className="text-sm text-muted-foreground">아래로 살펴보기</span>
         <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex justify-center p-2">
           <div className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" />
         </div>

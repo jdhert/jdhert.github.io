@@ -54,6 +54,9 @@ export function ProjectsSection() {
                       <p className="text-sm text-muted-foreground leading-relaxed mt-2">
                         {project.summary}
                       </p>
+                      <p className="mt-3 text-sm leading-relaxed text-foreground/75">
+                        {project.cardPoint}
+                      </p>
                     </div>
                   </div>
 

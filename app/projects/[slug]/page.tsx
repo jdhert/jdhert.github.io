@@ -145,9 +145,6 @@ export default async function ProjectDetailPage({
                           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/70">
                             Project Preview
                           </p>
-                          <p className="mt-2 text-sm leading-relaxed text-white/90">
-                            실제 화면을 통해 프로젝트 분위기와 인터페이스 구성을 빠르게 확인할 수 있습니다.
-                          </p>
                         </div>
                       </div>
                     ) : (

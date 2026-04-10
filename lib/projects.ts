@@ -26,6 +26,7 @@ export interface Project {
   imageSrc?: string
   imageAlt?: string
   github: string
+  serviceUrl?: string
   size: "large" | "medium"
 }
 
@@ -77,6 +78,7 @@ export const projects: Project[] = [
     imageSrc: "/projects/cs-chatbot-detail.png",
     imageAlt: "CS-ChatBot 프로젝트 화면",
     github: "https://github.com/jdhert/CS-ChatBot",
+    serviceUrl: "https://csbotservice.com",
     size: "large",
   },
   {
@@ -172,6 +174,8 @@ export const projects: Project[] = [
       "Spring, Vue, MySQL 기반으로 CRUD 흐름을 실제 서비스처럼 구성한 경험",
       "도메인 중심 설계와 사용자 상호작용을 함께 고민한 프로젝트",
     ],
+    imageSrc: "/projects/pet-public-detail.png",
+    imageAlt: "Pet-Public 프로젝트 메인 화면",
     github: "https://github.com/jdhert/Pet-Public",
     size: "medium",
   },

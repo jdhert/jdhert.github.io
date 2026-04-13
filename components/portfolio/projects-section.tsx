@@ -38,6 +38,27 @@ export function ProjectsSection() {
                 tabIndex={0}
                 aria-label={`${project.title} 상세 페이지 이동`}
               >
+                {project.imageSrc && (
+                  <div className="mb-5 overflow-hidden rounded-2xl border border-white/45 bg-white/40 shadow-[0_16px_44px_rgba(0,0,0,0.08)]">
+                    <div className="relative aspect-[16/9]">
+                      <img
+                        src={project.imageSrc}
+                        alt={project.imageAlt ?? `${project.title} preview`}
+                        className="block h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-black/55 via-black/10 to-transparent px-4 py-4">
+                        <span className="text-xs font-semibold tracking-[0.16em] text-white/75">
+                          PREVIEW
+                        </span>
+                        <span className="inline-flex items-center gap-1 text-xs font-medium text-white">
+                          Detail
+                          <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-start gap-3 min-w-0">
                     <div className={`p-2.5 rounded-xl ${project.bgColor}`}>

@@ -34,46 +34,46 @@ export const projects: Project[] = [
   {
     slug: "cs-chatbot",
     title: "CS-ChatBot",
-    summary: "반복적인 운영 문의 대응을 줄이기 위해 만든 CS 챗봇 프로젝트",
-    cardPoint: "반복 문의를 자동화 문제로 정의하고 FAQ 응답 흐름을 설계한 프로젝트입니다.",
+    summary: "사내 매뉴얼·FAQ·운영 이력을 RAG로 검색해 답변하는 CS 챗봇 시스템",
+    cardPoint: "44,955개 청크 기반 검색과 운영 smoke 4/4 통과를 통해 실제 운영 가능한 자동응답 흐름을 검증했습니다.",
     icon: MessageSquare,
     color: "text-primary",
     bgColor: "bg-primary/10",
-    tech: ["TypeScript", "NLP", "Chatbot"],
+    tech: ["TypeScript", "RAG", "pgvector", "Gemini"],
     overview:
-      "운영·문의 대응 과정에서 반복적으로 확인해야 하는 정보를 더 빠르게 찾고 답변할 수 있도록, FAQ 중심의 응답 흐름을 설계한 프로젝트입니다.",
+      "사내 매뉴얼, FAQ, 운영 이력 데이터를 PostgreSQL + pgvector에 적재하고, Rule 기반 검색과 Vector Similarity를 함께 사용하는 하이브리드 RAG 챗봇으로 운영 문의 답변 흐름을 구축한 프로젝트입니다.",
     details: [
       {
         label: "해결 과제",
-        text: "운영 담당자가 자주 묻는 질문과 업무 지식을 빠르게 찾기 어려운 문제를 줄이는 것이 목표였습니다.",
+        text: "운영 담당자가 반복 문의마다 매뉴얼과 과거 처리 이력을 직접 찾아야 해서, 답변 속도와 일관성이 담당자 숙련도에 의존하는 문제가 있었습니다.",
       },
       {
         label: "구현 내용",
-        text: "문의 흐름을 고려한 챗봇 구조를 설계하고, FAQ 자동 응답 기능을 구현했습니다.",
+        text: "44,955개 임베딩 청크를 적재하고, pgvector 기반 유사도 검색과 Rule 기반 검색을 결합해 사용자의 질문에 관련 이력과 매뉴얼 후보를 함께 제공하도록 구성했습니다.",
       },
       {
         label: "의미",
-        text: "운영 효율성과 정보 접근성을 높일 수 있는 자동화 방향을 프로젝트로 구체화했습니다.",
+        text: "운영 smoke 평가 4/4 통과, 50건 운영성 질의셋 기준 Top1 37/37·부정 질의 차단 13/13 결과로 서비스화 가능성을 검증했습니다.",
       },
     ],
     highlights: [
       {
         label: "프로젝트 성격",
-        value: "운영 문의 대응을 줄이기 위한 자동화형 챗봇 프로젝트",
+        value: "사내 지원 시스템을 위한 RAG 기반 질의응답 챗봇 플랫폼",
       },
       {
         label: "집중 포인트",
-        value: "FAQ 응답 흐름과 지식 접근 경로를 빠르게 구성하는 데 집중했습니다.",
+        value: "Rule 검색, Vector Similarity, LLM reranking을 결합해 운영 이력과 매뉴얼 후보의 검색 정확도를 높이는 데 집중했습니다.",
       },
       {
         label: "기대 효과",
-        value: "반복 문의 대응 시간을 줄이고 운영 효율을 높일 수 있는 방향을 검증했습니다.",
+        value: "반복 문의에 대해 근거 이력과 매뉴얼을 함께 제시해 담당자의 검색 시간을 줄이고 답변 일관성을 높일 수 있는 구조를 만들었습니다.",
       },
     ],
     strengths: [
-      "반복 업무를 기능 요구사항이 아니라 운영 효율 문제로 정의한 경험",
-      "TypeScript 기반으로 챗봇 응답 흐름과 FAQ 구조를 설계한 경험",
-      "자동화가 실제 운영 부담을 어떻게 줄일지 관점까지 담아낸 프로젝트",
+      "운영 문의를 단순 FAQ가 아니라 검색 품질과 응답 신뢰도 문제로 정의한 경험",
+      "PostgreSQL, pgvector, Gemini Embedding 기반으로 RAG 검색 파이프라인을 구성한 경험",
+      "운영 smoke와 평가 지표를 두어 실제 서비스 배포 후에도 품질을 확인할 수 있게 만든 프로젝트",
     ],
     imageSrc: "/projects/cs-chatbot-detail.png",
     imageAlt: "CS-ChatBot 프로젝트 화면",
@@ -84,46 +84,46 @@ export const projects: Project[] = [
   {
     slug: "scenehive",
     title: "SceneHive",
-    summary: "프론트엔드와 백엔드를 함께 설계하며 서비스 흐름을 구현한 웹 프로젝트",
-    cardPoint: "프론트엔드와 백엔드 인터페이스를 end-to-end로 맞춘 경험이 담긴 프로젝트입니다.",
+    summary: "영화 탐색, 영화 클럽, 실시간 토론을 연결한 영화 커뮤니티 플랫폼",
+    cardPoint: "TMDB 탐색 흐름과 영화 클럽·실시간 채팅·명대사/리뷰 아카이브를 하나의 서비스 흐름으로 연결했습니다.",
     icon: Film,
     color: "text-accent",
     bgColor: "bg-accent/10",
-    tech: ["React", "Spring Boot", "PostgreSQL"],
+    tech: ["Next.js", "Spring Boot", "PostgreSQL", "WebSocket"],
     overview:
-      "사용자 화면 흐름과 서버 데이터 구조가 자연스럽게 이어지도록, 프론트엔드와 백엔드를 함께 설계하며 end-to-end 흐름을 구현한 프로젝트입니다.",
+      "TMDB 기반 영화/TV/인물 탐색에서 즐겨찾기, 영화 클럽 참여, 실시간 채팅, 명대사와 리뷰 기록까지 이어지는 커뮤니티 흐름을 Next.js 프론트엔드와 Spring Boot 백엔드로 구현한 프로젝트입니다.",
     details: [
       {
         label: "해결 과제",
-        text: "화면 흐름과 서버 데이터 구조가 어긋나지 않도록 처음부터 일관된 서비스 구조를 설계하는 데 집중했습니다.",
+        text: "단순 영화 정보 조회를 넘어 사용자가 작품을 탐색한 뒤 커뮤니티 공간에서 대화하고 기록을 남기는 흐름까지 연결해야 했습니다.",
       },
       {
         label: "구현 내용",
-        text: "RESTful API를 설계하고 프론트엔드와 연동하며 화면과 서버 간 인터페이스를 맞췄습니다.",
+        text: "TMDB API 연동, JWT/OAuth2 인증, 영화 클럽 Workspace, STOMP WebSocket 기반 실시간 채팅, 즐겨찾기와 알림 흐름을 프론트엔드와 백엔드 인터페이스에 맞춰 구현했습니다.",
       },
       {
         label: "의미",
-        text: "서비스 구조 설계부터 API 연동까지 전 과정을 경험하며 풀스택 이해도를 넓혔습니다.",
+        text: "외부 콘텐츠 데이터는 TMDB에서 조회하고, 커뮤니티 데이터는 로컬 DB에서 관리하는 구조를 통해 외부 API와 내부 도메인 모델을 분리해 설계한 경험을 쌓았습니다.",
       },
     ],
     highlights: [
       {
         label: "프로젝트 성격",
-        value: "화면과 서버를 함께 설계한 end-to-end 웹 서비스 프로젝트",
+        value: "영화 탐색과 커뮤니티 기록을 결합한 end-to-end 웹 서비스 프로젝트",
       },
       {
         label: "집중 포인트",
-        value: "프론트엔드와 백엔드 사이의 인터페이스를 일관성 있게 맞추는 데 집중했습니다.",
+        value: "TMDB 탐색, 인증, Workspace 멤버십, 실시간 채팅, 리뷰/메모 CRUD가 끊기지 않도록 API와 화면 흐름을 맞추는 데 집중했습니다.",
       },
       {
         label: "기대 효과",
-        value: "서비스 구조 설계부터 API 연동까지 전체 흐름을 경험하며 시야를 넓혔습니다.",
+        value: "외부 API 기반 콘텐츠와 내부 커뮤니티 데이터를 분리해 관리하면서 서비스 확장에 필요한 도메인 구조를 경험했습니다.",
       },
     ],
     strengths: [
-      "프론트엔드와 백엔드 인터페이스를 함께 설계하며 화면-데이터 흐름을 연결한 경험",
-      "React, Spring Boot, PostgreSQL 조합으로 구조를 end-to-end로 구현한 경험",
-      "기능 구현뿐 아니라 서비스 구조를 처음부터 맞춰본 경험이 드러나는 프로젝트",
+      "Next.js 화면 흐름과 Spring Boot API 계약을 함께 맞추며 탐색-참여-기록 흐름을 연결한 경험",
+      "JWT/OAuth2 인증, WebSocket 채팅, 알림, Workspace 멤버십을 하나의 커뮤니티 도메인으로 구성한 경험",
+      "TMDB 외부 데이터와 PostgreSQL 내부 데이터를 역할별로 분리해 설계한 프로젝트",
     ],
     imageSrc: "/projects/scenehive-detail.png",
     imageAlt: "SceneHive 프로젝트 화면",
@@ -133,46 +133,46 @@ export const projects: Project[] = [
   {
     slug: "pet-public",
     title: "Pet-Public",
-    summary: "반려동물 정보를 공유하고 소통할 수 있도록 만든 커뮤니티 서비스",
-    cardPoint: "게시글, 댓글, 좋아요가 자연스럽게 이어지는 커뮤니티 흐름 설계 경험이 담겨 있습니다.",
+    summary: "반려동물 일상 기록, Q&A, 동반 장소 탐색을 제공하는 커뮤니티 서비스",
+    cardPoint: "펫스타그램, Q&A, 다이어리, 카카오맵·공공 API 장소 검색을 연결해 반려동물 사용자 흐름을 구성했습니다.",
     icon: PawPrint,
     color: "text-chart-4",
     bgColor: "bg-chart-4/10",
     tech: ["Spring", "Vue", "MySQL"],
     overview:
-      "반려동물 관련 정보를 공유하고 소통할 수 있도록, 게시글과 댓글 같은 커뮤니티 핵심 기능을 중심으로 만든 프로젝트입니다.",
+      "반려동물과 함께하는 일상을 기록하고, 경험을 공유하며, 동반 가능한 장소를 탐색할 수 있도록 펫스타그램, Q&A, 액티비티, 다이어리, 마이페이지 기능을 구성한 팀 프로젝트입니다.",
     details: [
       {
         label: "해결 과제",
-        text: "게시글 작성, 댓글, 좋아요 같은 커뮤니티 기능을 자연스럽게 연결하는 구조가 필요했습니다.",
+        text: "반려동물 커뮤니티 사용자가 기록, 질문, 장소 탐색을 각각 따로 사용하는 것이 아니라 하나의 서비스 안에서 자연스럽게 오가도록 만드는 것이 과제였습니다.",
       },
       {
         label: "구현 내용",
-        text: "데이터 구조를 설계하고 사용자 중심의 커뮤니티 기능을 구현했습니다.",
+        text: "자유게시판과 Q&A 답변 CRUD, 다이어리 CRUD, 소셜 로그인, 카카오맵 로드뷰와 공공 API 기반 장소 검색 흐름을 Spring/Vue/MySQL 기반으로 구현했습니다.",
       },
       {
         label: "의미",
-        text: "도메인 구조와 상호작용 기능을 함께 설계하며 커뮤니티 서비스 개발 경험을 쌓았습니다.",
+        text: "팀장 역할로 기능 범위를 조율하며, 커뮤니티 상호작용과 위치 기반 정보 탐색을 함께 다루는 서비스 개발 경험을 쌓았습니다.",
       },
     ],
     highlights: [
       {
         label: "프로젝트 성격",
-        value: "반려동물 사용자를 위한 커뮤니티 플랫폼 프로젝트",
+        value: "반려동물 일상 기록과 장소 탐색을 결합한 커뮤니티 플랫폼 프로젝트",
       },
       {
         label: "집중 포인트",
-        value: "게시글, 댓글, 좋아요가 자연스럽게 연결되는 상호작용 구조를 설계했습니다.",
+        value: "펫스타그램, Q&A, 다이어리, 액티비티 지도 기능이 사용자 목적별로 이어지도록 구성했습니다.",
       },
       {
         label: "기대 효과",
-        value: "커뮤니티 서비스에 필요한 도메인 모델과 흐름을 실제로 구현하며 감각을 넓혔습니다.",
+        value: "게시판 CRUD뿐 아니라 소셜 로그인, 지도·로드뷰, 공공 API 검색을 함께 다루며 실서비스형 기능 조합을 경험했습니다.",
       },
     ],
     strengths: [
-      "커뮤니티 서비스의 기본 상호작용을 데이터 구조와 함께 설계한 경험",
-      "Spring, Vue, MySQL 기반으로 CRUD 흐름을 실제 서비스처럼 구성한 경험",
-      "도메인 중심 설계와 사용자 상호작용을 함께 고민한 프로젝트",
+      "반려동물 사용자 여정을 기록, 질문, 장소 탐색으로 나누고 화면 흐름에 맞춰 기능을 구성한 경험",
+      "Spring, Vue, MySQL, MyBatis 기반으로 게시판/Q&A/다이어리 CRUD를 구현한 경험",
+      "카카오맵 로드뷰와 공공 API 장소 검색을 커뮤니티 서비스에 연결한 프로젝트",
     ],
     imageSrc: "/projects/pet-public-detail.png",
     imageAlt: "Pet-Public 프로젝트 메인 화면",

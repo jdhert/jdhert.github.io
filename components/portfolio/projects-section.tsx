@@ -18,23 +18,19 @@ export function ProjectsSection() {
       <div className="space-y-4">
         <BentoCard highlight>
           <div className="space-y-6">
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
               <div>
                 <p className="text-xs font-semibold tracking-[0.18em] text-foreground/50">
-                  프로젝트 가이드
+                  PROJECT GUIDE
                 </p>
-                <h3 className="mt-3 text-2xl font-bold leading-tight text-foreground lg:text-[2rem]">
-                  어떤 역량을 먼저 확인하고 싶은지에 따라
-                  <br className="hidden lg:block" />
-                  추천 프로젝트가 달라집니다.
+                <h3 className="mt-3 text-2xl font-bold text-foreground">
+                  무엇을 보고 싶은지에 따라 먼저 볼 프로젝트가 다릅니다.
                 </h3>
               </div>
-              <div className="max-w-2xl rounded-2xl border border-white/40 bg-white/45 px-4 py-4">
-                <p className="text-sm leading-7 text-muted-foreground">
-                  한 번에 모든 프로젝트를 읽지 않아도 되도록, 각 프로젝트가 특히 잘 보여주는
-                  역량 기준으로 먼저 볼 포인트를 정리했습니다.
-                </p>
-              </div>
+              <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
+                채용 담당자나 협업 관점에서 바로 판단할 수 있도록, 각 프로젝트가 특히 잘 보여주는
+                포인트를 먼저 정리했습니다.
+              </p>
             </div>
 
             <div className="grid gap-4">
@@ -46,30 +42,27 @@ export function ProjectsSection() {
                 return (
                   <div
                     key={`${project.slug}-guide`}
-                    className="rounded-[1.75rem] border border-white/45 bg-white/50 p-6 shadow-[0_16px_40px_rgba(255,255,255,0.16)]"
+                    className="rounded-[1.75rem] border border-white/45 bg-white/45 p-5 shadow-[0_16px_40px_rgba(255,255,255,0.16)]"
                   >
-                    <div className="grid gap-6 lg:grid-cols-[minmax(250px,0.95fr)_minmax(0,1.15fr)_minmax(250px,0.85fr)] lg:items-start">
+                    <div className="grid gap-5 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.2fr)_minmax(220px,0.75fr)]">
                       <div className="flex min-w-0 items-start gap-3">
                         <div className={`mt-0.5 rounded-2xl p-3 ${project.bgColor}`}>
                           <Icon className={`h-5 w-5 ${project.color}`} />
                         </div>
                         <div className="min-w-0 flex-1">
                           <div className="flex flex-wrap items-center gap-2">
-                            <h3 className="text-xl font-semibold leading-tight text-foreground">
+                            <h3 className="text-lg font-semibold leading-tight text-foreground">
                               {project.title}
                             </h3>
                             <span className="rounded-full border border-white/45 bg-white/60 px-2.5 py-1 text-[11px] font-semibold tracking-[0.08em] text-foreground/65">
-                              {project.size === "large" ? "우선 추천" : "추천"}
+                              {project.size === "large" ? "FEATURED" : "SELECTED"}
                             </span>
                           </div>
-                          <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                            {project.summary}
-                          </p>
-                          <div className="mt-4 flex flex-wrap gap-2">
+                          <div className="mt-3 flex flex-wrap gap-2">
                             {project.tech.slice(0, 3).map((tech) => (
                               <span
                                 key={`${project.slug}-${tech}-guide`}
-                                className="rounded-full bg-secondary/75 px-2.5 py-1 text-[11px] font-semibold tracking-[0.04em] text-secondary-foreground"
+                                className="rounded-full bg-secondary/75 px-2.5 py-1 text-[11px] font-semibold tracking-[0.06em] text-secondary-foreground"
                               >
                                 {tech}
                               </span>
@@ -80,7 +73,7 @@ export function ProjectsSection() {
                             {roleFact && (
                               <div className="rounded-2xl bg-white/55 px-4 py-4">
                                 <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
-                                  역할
+                                  ROLE
                                 </p>
                                 <p className="mt-2 text-sm leading-6 text-foreground/80">
                                   {roleFact.value}
@@ -90,7 +83,7 @@ export function ProjectsSection() {
                             {outcomeFact && (
                               <div className="rounded-2xl bg-white/55 px-4 py-4">
                                 <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
-                                  대표 결과
+                                  OUTCOME
                                 </p>
                                 <p className="mt-2 text-sm leading-6 text-foreground/80">
                                   {outcomeFact.value}
@@ -130,21 +123,18 @@ export function ProjectsSection() {
                         </div>
                       </div>
 
-                      <div className="min-w-0 rounded-2xl border border-white/40 bg-white/45 px-5 py-5 lg:min-h-full">
-                        <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
-                          이런 경우 먼저 보면 좋습니다
-                        </p>
-                        <p className="mt-3 text-base leading-8 text-foreground/80">
+                      <div className="min-w-0">
+                        <p className="text-sm leading-7 text-muted-foreground">
                           {project.recommendedFor}
                         </p>
                       </div>
 
-                      <div className="hidden lg:block rounded-2xl border border-white/40 bg-white/40 px-5 py-5">
+                      <div className="hidden lg:block">
                         <div className="grid gap-3">
                           {roleFact && (
                             <div className="rounded-2xl bg-white/55 px-4 py-4">
                               <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
-                                역할
+                                ROLE
                               </p>
                               <p className="mt-2 text-sm leading-6 text-foreground/80">
                                 {roleFact.value}
@@ -154,7 +144,7 @@ export function ProjectsSection() {
                           {outcomeFact && (
                             <div className="rounded-2xl bg-white/55 px-4 py-4">
                               <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
-                                대표 결과
+                                OUTCOME
                               </p>
                               <p className="mt-2 text-sm leading-6 text-foreground/80">
                                 {outcomeFact.value}

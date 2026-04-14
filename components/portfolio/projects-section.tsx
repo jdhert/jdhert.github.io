@@ -33,7 +33,7 @@ export function ProjectsSection() {
               </p>
             </div>
 
-            <div className="grid gap-4 xl:grid-cols-3">
+            <div className="grid gap-4">
               {projects.map((project) => {
                 const Icon = project.icon
                 const roleFact = project.facts.find((fact) => fact.label === "역할")
@@ -44,9 +44,9 @@ export function ProjectsSection() {
                     key={`${project.slug}-guide`}
                     className="rounded-[1.75rem] border border-white/45 bg-white/45 p-5 shadow-[0_16px_40px_rgba(255,255,255,0.16)]"
                   >
-                    <div className="flex flex-col gap-4">
+                    <div className="grid gap-5 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.2fr)_minmax(220px,0.75fr)]">
                       <div className="flex min-w-0 items-start gap-3">
-                        <div className={`rounded-2xl p-3 ${project.bgColor}`}>
+                        <div className={`mt-0.5 rounded-2xl p-3 ${project.bgColor}`}>
                           <Icon className={`h-5 w-5 ${project.color}`} />
                         </div>
                         <div className="min-w-0 flex-1">
@@ -68,60 +68,116 @@ export function ProjectsSection() {
                               </span>
                             ))}
                           </div>
+
+                          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:hidden">
+                            {roleFact && (
+                              <div className="rounded-2xl bg-white/55 px-4 py-4">
+                                <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
+                                  ROLE
+                                </p>
+                                <p className="mt-2 text-sm leading-6 text-foreground/80">
+                                  {roleFact.value}
+                                </p>
+                              </div>
+                            )}
+                            {outcomeFact && (
+                              <div className="rounded-2xl bg-white/55 px-4 py-4">
+                                <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
+                                  OUTCOME
+                                </p>
+                                <p className="mt-2 text-sm leading-6 text-foreground/80">
+                                  {outcomeFact.value}
+                                </p>
+                              </div>
+                            )}
+                          </div>
+
+                          <div className="mt-5 flex flex-wrap gap-2 lg:hidden">
+                            <Button
+                              type="button"
+                              size="sm"
+                              className="rounded-full bg-foreground text-background hover:bg-foreground/90"
+                              onClick={() => router.push(`/projects/${project.slug}`)}
+                            >
+                              상세 보기
+                            </Button>
+                            {project.serviceUrl && (
+                              <Button
+                                asChild
+                                type="button"
+                                size="sm"
+                                variant="outline"
+                                className="rounded-full glass-card border-0 hover:bg-white/80"
+                              >
+                                <a
+                                  href={project.serviceUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  <Globe className="mr-1 h-4 w-4" />
+                                  서비스
+                                </a>
+                              </Button>
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    <p className="mt-4 text-sm leading-7 text-muted-foreground">
-                      {project.recommendedFor}
-                    </p>
+                      <div className="min-w-0">
+                        <p className="text-sm leading-7 text-muted-foreground">
+                          {project.recommendedFor}
+                        </p>
+                      </div>
 
-                    <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
-                      {roleFact && (
-                        <div className="rounded-2xl bg-white/55 px-4 py-4">
-                          <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
-                            ROLE
-                          </p>
-                          <p className="mt-2 text-sm leading-6 text-foreground/80">
-                            {roleFact.value}
-                          </p>
+                      <div className="hidden lg:block">
+                        <div className="grid gap-3">
+                          {roleFact && (
+                            <div className="rounded-2xl bg-white/55 px-4 py-4">
+                              <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
+                                ROLE
+                              </p>
+                              <p className="mt-2 text-sm leading-6 text-foreground/80">
+                                {roleFact.value}
+                              </p>
+                            </div>
+                          )}
+                          {outcomeFact && (
+                            <div className="rounded-2xl bg-white/55 px-4 py-4">
+                              <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
+                                OUTCOME
+                              </p>
+                              <p className="mt-2 text-sm leading-6 text-foreground/80">
+                                {outcomeFact.value}
+                              </p>
+                            </div>
+                          )}
                         </div>
-                      )}
-                      {outcomeFact && (
-                        <div className="rounded-2xl bg-white/55 px-4 py-4">
-                          <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
-                            OUTCOME
-                          </p>
-                          <p className="mt-2 text-sm leading-6 text-foreground/80">
-                            {outcomeFact.value}
-                          </p>
-                        </div>
-                      )}
-                    </div>
 
-                    <div className="mt-5 flex flex-wrap gap-2">
-                      <Button
-                        type="button"
-                        size="sm"
-                        className="rounded-full bg-foreground text-background hover:bg-foreground/90"
-                        onClick={() => router.push(`/projects/${project.slug}`)}
-                      >
-                        상세 보기
-                      </Button>
-                      {project.serviceUrl && (
-                        <Button
-                          asChild
-                          type="button"
-                          size="sm"
-                          variant="outline"
-                          className="rounded-full glass-card border-0 hover:bg-white/80"
-                        >
-                          <a href={project.serviceUrl} target="_blank" rel="noopener noreferrer">
-                            <Globe className="mr-1 h-4 w-4" />
-                            서비스
-                          </a>
-                        </Button>
-                      )}
+                        <div className="mt-5 flex flex-wrap gap-2">
+                          <Button
+                            type="button"
+                            size="sm"
+                            className="rounded-full bg-foreground text-background hover:bg-foreground/90"
+                            onClick={() => router.push(`/projects/${project.slug}`)}
+                          >
+                            상세 보기
+                          </Button>
+                          {project.serviceUrl && (
+                            <Button
+                              asChild
+                              type="button"
+                              size="sm"
+                              variant="outline"
+                              className="rounded-full glass-card border-0 hover:bg-white/80"
+                            >
+                              <a href={project.serviceUrl} target="_blank" rel="noopener noreferrer">
+                                <Globe className="mr-1 h-4 w-4" />
+                                서비스
+                              </a>
+                            </Button>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 )

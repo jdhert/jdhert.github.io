@@ -81,8 +81,8 @@ export const portfolio = {
       summary: "화면을 예쁘게 만드는 것보다, 서비스 흐름이 끊기지 않게 연결하는 관점으로 다뤘습니다.",
       skills: ["Vue", "React", "Next.js", "TypeScript"],
       evidence:
-        "SceneHive와 포트폴리오에서는 Next.js/React를, 실무와 팀 프로젝트에서는 Vue를 사용하며 화면과 API 흐름을 맞췄습니다.",
-      related: ["SceneHive", "포트폴리오", "그룹웨어 유지보수", "Pet-Public"],
+        "SceneHive와 포트폴리오에서는 Next.js/React를, Pet-Public에서는 Vue를 사용하며 화면과 API 흐름을 맞췄습니다.",
+      related: ["SceneHive", "포트폴리오", "Pet-Public"],
     },
     {
       key: "database",

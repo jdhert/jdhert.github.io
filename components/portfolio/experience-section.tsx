@@ -67,7 +67,7 @@ export function ExperienceSection() {
           <div>
             <h4 className="font-medium text-foreground mb-2">주요 기술</h4>
             <div className="flex flex-wrap gap-2">
-              {["Java", "Spring", "MSSQL", "Vue"].map((tech) => (
+              {["Java", "Spring", "MSSQL"].map((tech) => (
                 <span 
                   key={tech}
                   className="px-3 py-1 text-xs font-medium rounded-full bg-secondary text-secondary-foreground"

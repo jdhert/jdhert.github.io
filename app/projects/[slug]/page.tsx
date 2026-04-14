@@ -41,12 +41,21 @@ export async function generateMetadata({
       siteName: `${portfolio.name} 포트폴리오`,
       locale: "ko_KR",
       type: "article",
+      images: project.imageSrc
+        ? [
+            {
+              url: project.imageSrc,
+              alt: project.imageAlt ?? `${project.title} 대표 이미지`,
+            },
+          ]
+        : undefined,
     },
     twitter: {
       card: "summary_large_image",
       title: `${project.title} | ${portfolio.name}`,
       description: project.summary,
       creator: "@jdhert",
+      images: project.imageSrc ? [project.imageSrc] : undefined,
     },
   }
 }

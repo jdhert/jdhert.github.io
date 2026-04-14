@@ -41,12 +41,19 @@ export const metadata: Metadata = {
     siteName: `${portfolio.name} Resume`,
     locale: 'ko_KR',
     type: 'website',
+    images: [
+      {
+        url: portfolio.defaultOgImage,
+        alt: `${portfolio.name} 포트폴리오 대표 이미지`,
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: `${portfolio.name} | ${portfolio.role}`,
     description: portfolio.summary,
     creator: '@jdhert',
+    images: [portfolio.defaultOgImage],
   },
   icons: {
     icon: [

@@ -1,12 +1,13 @@
 "use client"
 
-import { Github, Mail, Sparkles } from "lucide-react"
+import { FileText, Github, Mail, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { portfolio } from "@/lib/portfolio"
 import { useEffect, useState } from "react"
 
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
+  const resumeRequestUrl = `mailto:${portfolio.email}?subject=${portfolio.resumeRequestSubject}&body=${portfolio.resumeRequestBody}`
 
   useEffect(() => {
     setIsVisible(true)
@@ -76,6 +77,17 @@ export function HeroSection() {
             size="lg" 
             className="gap-2 rounded-full bg-foreground text-background hover:bg-foreground/90 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
           >
+            <a href={resumeRequestUrl}>
+              <FileText className="w-5 h-5" />
+              이력서 요청
+            </a>
+          </Button>
+          <Button 
+            asChild 
+            size="lg" 
+            variant="outline"
+            className="gap-2 rounded-full glass-card border-0 hover:bg-white/80 transition-all duration-300 hover:-translate-y-0.5"
+          >
             <a href={`mailto:${portfolio.email}`}>
               <Mail className="w-5 h-5" />
               이메일 문의
@@ -93,6 +105,7 @@ export function HeroSection() {
             </a>
           </Button>
         </div>
+        <p className="text-sm text-muted-foreground">{portfolio.resumeRequestNote}</p>
 
         {/* Social Links */}
         <div className="flex flex-wrap items-center gap-4 pt-6">

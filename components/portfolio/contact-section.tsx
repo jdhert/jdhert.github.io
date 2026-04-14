@@ -1,11 +1,13 @@
 "use client"
 
 import { BentoCard } from "./bento-grid"
-import { Github, Mail } from "lucide-react"
+import { FileText, Github, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { portfolio } from "@/lib/portfolio"
 
 export function ContactSection() {
+  const resumeRequestUrl = `mailto:${portfolio.email}?subject=${portfolio.resumeRequestSubject}&body=${portfolio.resumeRequestBody}`
+
   return (
     <section id="contact" className="py-24 scroll-mt-24">
       <h2 className="text-sm font-semibold text-primary uppercase tracking-wider mb-8">
@@ -22,12 +24,24 @@ export function ContactSection() {
             운영 환경을 더 안정적으로 만드는 일에 꾸준히 관심이 있습니다.
           </p>
           <p className="text-sm font-medium text-foreground mb-6">{portfolio.email}</p>
+          <p className="text-sm text-muted-foreground mb-6">{portfolio.resumeRequestNote}</p>
           
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button 
               asChild 
               size="lg"
               className="gap-2 rounded-full bg-foreground text-background hover:bg-foreground/90"
+            >
+              <a href={resumeRequestUrl}>
+                <FileText className="w-4 h-4" />
+                이력서 요청
+              </a>
+            </Button>
+            <Button 
+              asChild 
+              size="lg"
+              variant="outline"
+              className="gap-2 rounded-full glass-card border-0 hover:bg-white/80"
             >
               <a href={`mailto:${portfolio.email}`}>
                 <Mail className="w-4 h-4" />

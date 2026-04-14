@@ -32,6 +32,11 @@ export interface ProjectTroubleshootingItem {
   outcome: string
 }
 
+export interface ProjectRetrospectiveItem {
+  reflection: string
+  nextStep: string
+}
+
 export interface Project {
   slug: string
   title: string
@@ -50,6 +55,7 @@ export interface Project {
   details: ProjectDetailItem[]
   highlights: ProjectHighlight[]
   troubleshooting: ProjectTroubleshootingItem[]
+  retrospective: ProjectRetrospectiveItem
   strengths: string[]
   imageSrc?: string
   imageAlt?: string
@@ -139,6 +145,12 @@ export const projects: Project[] = [
         outcome: "Smoke 4/4, Top1 37/37, 부정 질의 차단 13/13 결과로 서비스화 가능성을 설명할 수 있게 됐습니다.",
       },
     ],
+    retrospective: {
+      reflection:
+        "RAG 프로젝트를 만들면서 검색 품질은 모델 선택보다 데이터 구조화와 평가 기준 설계가 훨씬 중요하다는 점을 크게 배웠습니다.",
+      nextStep:
+        "다시 확장한다면 질문 유형 분류를 더 정교하게 넣고, 운영 로그 기반 피드백 루프를 만들어 검색 품질을 지속적으로 개선하겠습니다.",
+    },
     strengths: [
       "운영 문의를 단순 FAQ가 아니라 검색 품질과 응답 신뢰도 문제로 정의한 경험",
       "PostgreSQL, pgvector, Gemini Embedding 기반으로 RAG 검색 파이프라인을 구성한 경험",
@@ -241,6 +253,12 @@ export const projects: Project[] = [
         outcome: "사용자 입장에서 탐색 이후 참여와 기록까지 자연스럽게 이어지는 end-to-end 흐름을 구성할 수 있었습니다.",
       },
     ],
+    retrospective: {
+      reflection:
+        "풀스택으로 서비스를 만들면서 기능 수를 늘리는 것보다, 탐색 이후 참여와 기록까지 이어지는 사용자 흐름을 끊기지 않게 만드는 일이 더 중요하다는 점을 느꼈습니다.",
+      nextStep:
+        "다시 개선한다면 클럽 활동 지표와 추천 로직을 추가해, 탐색한 콘텐츠가 커뮤니티 참여로 더 자연스럽게 이어지도록 만들고 싶습니다.",
+    },
     strengths: [
       "Next.js 화면 흐름과 Spring Boot API 계약을 함께 맞추며 탐색-참여-기록 흐름을 연결한 경험",
       "JWT/OAuth2 인증, WebSocket 채팅, 알림, Workspace 멤버십을 하나의 커뮤니티 도메인으로 구성한 경험",
@@ -342,6 +360,12 @@ export const projects: Project[] = [
         outcome: "커뮤니티, 소셜 로그인, 지도 API까지 포함한 기능 조합을 팀 단위로 완성할 수 있었습니다.",
       },
     ],
+    retrospective: {
+      reflection:
+        "팀 프로젝트에서는 구현 자체만큼이나 범위를 조율하고 팀이 같은 흐름을 보게 만드는 일이 중요하다는 점을 실제로 체감했습니다.",
+      nextStep:
+        "다시 진행한다면 공통 디자인 규칙과 API 명세를 더 일찍 정리해서, 협업 비용을 줄이고 완성도를 더 안정적으로 끌어올리겠습니다.",
+    },
     strengths: [
       "반려동물 사용자 여정을 기록, 질문, 장소 탐색으로 나누고 화면 흐름에 맞춰 기능을 구성한 경험",
       "Spring, Vue, MySQL, MyBatis 기반으로 게시판/Q&A/다이어리 CRUD를 구현한 경험",

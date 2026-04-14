@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowLeft, ArrowUpRight, Boxes, Bug, Github, Globe } from "lucide-react"
+import { ArrowLeft, ArrowUpRight, Boxes, Bug, Github, Globe, Lightbulb, RotateCcw } from "lucide-react"
 import { AnimatedBackground } from "@/components/portfolio/animated-background"
 import { MouseGradient } from "@/components/portfolio/mouse-gradient"
 import { BentoCard } from "@/components/portfolio/bento-grid"
@@ -530,6 +530,57 @@ export default async function ProjectDetailPage({
                   </div>
                 </BentoCard>
               ))}
+            </div>
+          </section>
+
+          <section className="space-y-4">
+            <div className="flex items-center justify-between gap-4">
+              <h2 className="text-sm font-semibold tracking-[0.16em] text-primary">
+                회고와 다음 개선점
+              </h2>
+              <span className="text-sm text-muted-foreground">프로젝트를 다시 본다면</span>
+            </div>
+
+            <div className="grid gap-4 lg:grid-cols-2">
+              <BentoCard className="h-full p-6">
+                <div className="flex items-start gap-3">
+                  <div className="rounded-2xl bg-primary/10 p-3">
+                    <Lightbulb className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
+                      RETROSPECTIVE
+                    </p>
+                    <h3 className="mt-2 text-xl font-semibold text-foreground">
+                      이번 프로젝트를 통해 얻은 점
+                    </h3>
+                  </div>
+                </div>
+
+                <p className="mt-5 text-sm leading-7 text-muted-foreground">
+                  {project.retrospective.reflection}
+                </p>
+              </BentoCard>
+
+              <BentoCard className="h-full p-6">
+                <div className="flex items-start gap-3">
+                  <div className="rounded-2xl bg-accent/10 p-3">
+                    <RotateCcw className="h-5 w-5 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
+                      NEXT STEP
+                    </p>
+                    <h3 className="mt-2 text-xl font-semibold text-foreground">
+                      다시 만든다면 이렇게 개선하겠습니다
+                    </h3>
+                  </div>
+                </div>
+
+                <p className="mt-5 text-sm leading-7 text-muted-foreground">
+                  {project.retrospective.nextStep}
+                </p>
+              </BentoCard>
             </div>
           </section>
         </div>

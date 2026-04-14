@@ -26,6 +26,7 @@ export interface Project {
   title: string
   summary: string
   cardPoint: string
+  recommendedFor: string
   icon: LucideIcon
   color: string
   bgColor: string
@@ -50,6 +51,8 @@ export const projects: Project[] = [
     title: "CS-ChatBot",
     summary: "사내 매뉴얼·FAQ·운영 이력을 RAG로 검색해 답변하는 CS 챗봇 시스템",
     cardPoint: "44,955개 청크 기반 검색과 운영 smoke 4/4 통과를 통해 실제 운영 가능한 자동응답 흐름을 검증했습니다.",
+    recommendedFor:
+      "운영 자동화, RAG 품질 검증, 실제 서비스 배포 가능성을 보고 싶을 때 가장 먼저 보기 좋은 프로젝트",
     icon: MessageSquare,
     color: "text-primary",
     bgColor: "bg-primary/10",
@@ -120,6 +123,8 @@ export const projects: Project[] = [
     title: "SceneHive",
     summary: "영화 탐색, 영화 클럽, 실시간 토론을 연결한 영화 커뮤니티 플랫폼",
     cardPoint: "TMDB 탐색 흐름과 영화 클럽·실시간 채팅·명대사/리뷰 아카이브를 하나의 서비스 흐름으로 연결했습니다.",
+    recommendedFor:
+      "풀스택 구성, 외부 API 연동, 실시간 기능이 포함된 end-to-end 웹서비스 경험을 보고 싶을 때 좋은 프로젝트",
     icon: Film,
     color: "text-accent",
     bgColor: "bg-accent/10",
@@ -189,6 +194,8 @@ export const projects: Project[] = [
     title: "Pet-Public",
     summary: "반려동물 일상 기록, Q&A, 동반 장소 탐색을 제공하는 커뮤니티 서비스",
     cardPoint: "펫스타그램, Q&A, 다이어리, 카카오맵·공공 API 장소 검색을 연결해 반려동물 사용자 흐름을 구성했습니다.",
+    recommendedFor:
+      "팀 프로젝트 리딩, 커뮤니티 CRUD, 지도 API와 소셜 로그인 조합 경험을 보고 싶을 때 좋은 프로젝트",
     icon: PawPrint,
     color: "text-chart-4",
     bgColor: "bg-chart-4/10",

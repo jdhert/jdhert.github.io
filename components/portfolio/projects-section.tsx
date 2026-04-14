@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation"
 import { BentoCard } from "./bento-grid"
-import { ArrowUpRight, Github } from "lucide-react"
+import { ArrowUpRight, Github, Globe } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { projects } from "@/lib/projects"
 
@@ -16,6 +16,109 @@ export function ProjectsSection() {
       </h2>
 
       <div className="space-y-4">
+        <BentoCard highlight>
+          <div className="space-y-6">
+            <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <p className="text-xs font-semibold tracking-[0.18em] text-foreground/50">
+                  PROJECT GUIDE
+                </p>
+                <h3 className="mt-3 text-2xl font-bold text-foreground">
+                  무엇을 보고 싶은지에 따라 먼저 볼 프로젝트가 다릅니다.
+                </h3>
+              </div>
+              <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
+                채용 담당자나 협업 관점에서 바로 판단할 수 있도록, 각 프로젝트가 특히 잘 보여주는
+                포인트를 먼저 정리했습니다.
+              </p>
+            </div>
+
+            <div className="grid gap-4 xl:grid-cols-3">
+              {projects.map((project) => {
+                const Icon = project.icon
+                const roleFact = project.facts.find((fact) => fact.label === "역할")
+                const outcomeFact = project.facts.find((fact) => fact.label === "성과")
+
+                return (
+                  <div
+                    key={`${project.slug}-guide`}
+                    className="rounded-[1.75rem] border border-white/45 bg-white/45 p-5 shadow-[0_16px_40px_rgba(255,255,255,0.16)]"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex min-w-0 items-start gap-3">
+                        <div className={`rounded-2xl p-3 ${project.bgColor}`}>
+                          <Icon className={`h-5 w-5 ${project.color}`} />
+                        </div>
+                        <div className="min-w-0">
+                          <h3 className="text-lg font-semibold text-foreground">{project.title}</h3>
+                          <p className="mt-1 text-xs font-semibold tracking-[0.14em] text-foreground/50">
+                            {project.tech.slice(0, 3).join(" · ")}
+                          </p>
+                        </div>
+                      </div>
+                      <span className="rounded-full border border-white/45 bg-white/60 px-2.5 py-1 text-[11px] font-semibold tracking-[0.08em] text-foreground/65">
+                        {project.size === "large" ? "FEATURED" : "SELECTED"}
+                      </span>
+                    </div>
+
+                    <p className="mt-4 text-sm leading-7 text-muted-foreground">
+                      {project.recommendedFor}
+                    </p>
+
+                    <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
+                      {roleFact && (
+                        <div className="rounded-2xl bg-white/55 px-4 py-4">
+                          <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
+                            ROLE
+                          </p>
+                          <p className="mt-2 text-sm leading-6 text-foreground/80">
+                            {roleFact.value}
+                          </p>
+                        </div>
+                      )}
+                      {outcomeFact && (
+                        <div className="rounded-2xl bg-white/55 px-4 py-4">
+                          <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
+                            OUTCOME
+                          </p>
+                          <p className="mt-2 text-sm leading-6 text-foreground/80">
+                            {outcomeFact.value}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      <Button
+                        type="button"
+                        size="sm"
+                        className="rounded-full bg-foreground text-background hover:bg-foreground/90"
+                        onClick={() => router.push(`/projects/${project.slug}`)}
+                      >
+                        상세 보기
+                      </Button>
+                      {project.serviceUrl && (
+                        <Button
+                          asChild
+                          type="button"
+                          size="sm"
+                          variant="outline"
+                          className="rounded-full glass-card border-0 hover:bg-white/80"
+                        >
+                          <a href={project.serviceUrl} target="_blank" rel="noopener noreferrer">
+                            <Globe className="mr-1 h-4 w-4" />
+                            서비스
+                          </a>
+                        </Button>
+                      )}
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </BentoCard>
+
         {projects.map((project, index) => {
           const Icon = project.icon
 

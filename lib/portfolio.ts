@@ -60,4 +60,47 @@ export const portfolio = {
     "사용자 영향도와 재발 가능성을 함께 보고 우선순위를 정합니다.",
     "수정 이후에도 운영 관점에서 설명 가능한 상태를 만드는 편입니다.",
   ],
+  skillApproach: [
+    "기술 이름 자체보다, 실제로 어떤 문제를 해결하는 데 사용했는지를 더 중요하게 봅니다.",
+    "운영 환경에서 다뤄본 기술과 개인 프로젝트에서 확장해본 기술을 구분해 설명할 수 있습니다.",
+    "백엔드 중심이지만 프론트엔드와 배포까지 이어지는 흐름을 함께 이해하려고 합니다.",
+  ],
+  skillEvidence: [
+    {
+      key: "backend",
+      title: "Backend",
+      summary: "운영 이슈 대응과 서비스 기능 구현 모두에서 가장 오래 집중한 영역입니다.",
+      skills: ["Java", "Spring", "Spring Boot", "MyBatis"],
+      evidence:
+        "그룹웨어 유지보수, CS-ChatBot API 구성, SceneHive 백엔드 설계처럼 실제 운영과 기능 개발 양쪽에서 반복 사용했습니다.",
+      related: ["운영 유지보수", "CS-ChatBot", "SceneHive", "Pet-Public"],
+    },
+    {
+      key: "frontend",
+      title: "Frontend",
+      summary: "화면을 예쁘게 만드는 것보다, 서비스 흐름이 끊기지 않게 연결하는 관점으로 다뤘습니다.",
+      skills: ["Vue", "React", "Next.js", "TypeScript"],
+      evidence:
+        "SceneHive와 포트폴리오에서는 Next.js/React를, 실무와 팀 프로젝트에서는 Vue를 사용하며 화면과 API 흐름을 맞췄습니다.",
+      related: ["SceneHive", "포트폴리오", "그룹웨어 유지보수", "Pet-Public"],
+    },
+    {
+      key: "database",
+      title: "Database",
+      summary: "저장 구조를 설계하는 것보다 더 자주, 느린 구간과 운영 데이터를 읽어내는 역할로 깊게 다뤘습니다.",
+      skills: ["MSSQL", "MySQL", "MariaDB", "PostgreSQL", "pgvector"],
+      evidence:
+        "실무에서는 MSSQL 기반 장애 원인 분석과 쿼리 튜닝을, 개인 프로젝트에서는 PostgreSQL과 pgvector 기반 검색 구조를 경험했습니다.",
+      related: ["운영 유지보수", "CS-ChatBot", "SceneHive", "Pet-Public"],
+    },
+    {
+      key: "infra",
+      title: "Infra / Cloud",
+      summary: "배포 자체보다도, 서비스가 실제로 동작하고 검증되는 흐름을 만드는 데 초점을 맞췄습니다.",
+      skills: ["AWS", "Oracle Cloud", "Docker", "Vercel"],
+      evidence:
+        "CS-ChatBot 배포와 포트폴리오 운영처럼, 개발 결과물이 실제 URL과 운영 검증으로 이어지도록 정리했습니다.",
+      related: ["CS-ChatBot", "포트폴리오"],
+    },
+  ],
 } as const

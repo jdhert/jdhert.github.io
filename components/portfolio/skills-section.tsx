@@ -1,38 +1,31 @@
 "use client"
 
 import { BentoCard, BentoGrid } from "./bento-grid"
-import { Server, Layout, Database, Cloud } from "lucide-react"
+import { Cloud, Database, Layout, Server } from "lucide-react"
+import { portfolio } from "@/lib/portfolio"
 
-const skillCategories = [
-  {
-    title: "Backend",
+const skillMeta = {
+  backend: {
     icon: Server,
     color: "text-primary",
     bgColor: "bg-primary/10",
-    skills: ["Java", "Spring", "Spring Boot"],
   },
-  {
-    title: "Frontend",
+  frontend: {
     icon: Layout,
     color: "text-accent",
     bgColor: "bg-accent/10",
-    skills: ["Vue", "React", "Next.js"],
   },
-  {
-    title: "Database",
+  database: {
     icon: Database,
     color: "text-chart-3",
     bgColor: "bg-chart-3/10",
-    skills: ["MSSQL", "MariaDB", "MySQL", "PostgreSQL"],
   },
-  {
-    title: "Infra / Cloud",
+  infra: {
     icon: Cloud,
     color: "text-chart-4",
     bgColor: "bg-chart-4/10",
-    skills: ["AWS", "Oracle Cloud", "Docker"],
   },
-]
+} as const
 
 export function SkillsSection() {
   return (
@@ -41,35 +34,88 @@ export function SkillsSection() {
         기술 스택
       </h2>
 
-      <BentoGrid className="grid-cols-1 sm:grid-cols-2">
-        {skillCategories.map((category, index) => {
-          const Icon = category.icon
-          return (
-            <BentoCard 
-              key={index}
-              className={index === 0 ? "sm:col-span-2" : ""}
-              highlight={index === 0}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className={`p-2.5 rounded-xl ${category.bgColor}`}>
-                  <Icon className={`w-5 h-5 ${category.color}`} />
+      <div className="space-y-4">
+        <BentoCard highlight>
+          <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
+            <div>
+              <p className="text-xs font-semibold tracking-[0.18em] text-foreground/50">
+                SKILL CONTEXT
+              </p>
+              <h3 className="mt-3 text-2xl font-bold text-foreground">
+                기술을 나열하기보다, 어디에 써봤는지와 어떤 문제에 연결했는지를 보여주고 싶습니다.
+              </h3>
+            </div>
+
+            <ul className="space-y-3 text-sm leading-7 text-muted-foreground sm:text-base">
+              {portfolio.skillApproach.map((item) => (
+                <li key={item} className="flex gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </BentoCard>
+
+        <BentoGrid className="grid-cols-1 sm:grid-cols-2">
+          {portfolio.skillEvidence.map((category, index) => {
+            const meta = skillMeta[category.key]
+            const Icon = meta.icon
+
+            return (
+              <BentoCard
+                key={category.key}
+                className={index === 0 ? "sm:col-span-2" : ""}
+                highlight={index === 0}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`p-2.5 rounded-xl ${meta.bgColor}`}>
+                    <Icon className={`w-5 h-5 ${meta.color}`} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg text-foreground">{category.title}</h3>
+                    <p className="mt-1 text-sm text-muted-foreground">{category.summary}</p>
+                  </div>
                 </div>
-                <h3 className="font-bold text-lg text-foreground">{category.title}</h3>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-3 py-1.5 text-sm font-medium rounded-full bg-secondary/80 text-secondary-foreground hover:bg-secondary transition-colors cursor-default"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </BentoCard>
-          )
-        })}
-      </BentoGrid>
+
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1.5 text-sm font-medium rounded-full bg-secondary/80 text-secondary-foreground hover:bg-secondary transition-colors cursor-default"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-5 rounded-2xl border border-white/45 bg-white/45 px-4 py-4">
+                  <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
+                    HOW I USED IT
+                  </p>
+                  <p className="mt-2 text-sm leading-7 text-foreground/80">{category.evidence}</p>
+                </div>
+
+                <div className="mt-5">
+                  <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
+                    RELATED WORK
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {category.related.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-white/45 bg-white/55 px-3 py-1.5 text-xs font-semibold tracking-[0.08em] text-foreground/65"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </BentoCard>
+            )
+          })}
+        </BentoGrid>
+      </div>
     </section>
   )
 }

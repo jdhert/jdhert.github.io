@@ -44,21 +44,32 @@ export function ProjectsSection() {
                     key={`${project.slug}-guide`}
                     className="rounded-[1.75rem] border border-white/45 bg-white/45 p-5 shadow-[0_16px_40px_rgba(255,255,255,0.16)]"
                   >
-                    <div className="flex items-start justify-between gap-4">
+                    <div className="flex flex-col gap-4">
                       <div className="flex min-w-0 items-start gap-3">
                         <div className={`rounded-2xl p-3 ${project.bgColor}`}>
                           <Icon className={`h-5 w-5 ${project.color}`} />
                         </div>
-                        <div className="min-w-0">
-                          <h3 className="text-lg font-semibold text-foreground">{project.title}</h3>
-                          <p className="mt-1 text-xs font-semibold tracking-[0.14em] text-foreground/50">
-                            {project.tech.slice(0, 3).join(" · ")}
-                          </p>
+                        <div className="min-w-0 flex-1">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <h3 className="text-lg font-semibold leading-tight text-foreground">
+                              {project.title}
+                            </h3>
+                            <span className="rounded-full border border-white/45 bg-white/60 px-2.5 py-1 text-[11px] font-semibold tracking-[0.08em] text-foreground/65">
+                              {project.size === "large" ? "FEATURED" : "SELECTED"}
+                            </span>
+                          </div>
+                          <div className="mt-3 flex flex-wrap gap-2">
+                            {project.tech.slice(0, 3).map((tech) => (
+                              <span
+                                key={`${project.slug}-${tech}-guide`}
+                                className="rounded-full bg-secondary/75 px-2.5 py-1 text-[11px] font-semibold tracking-[0.06em] text-secondary-foreground"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
                         </div>
                       </div>
-                      <span className="rounded-full border border-white/45 bg-white/60 px-2.5 py-1 text-[11px] font-semibold tracking-[0.08em] text-foreground/65">
-                        {project.size === "large" ? "FEATURED" : "SELECTED"}
-                      </span>
                     </div>
 
                     <p className="mt-4 text-sm leading-7 text-muted-foreground">

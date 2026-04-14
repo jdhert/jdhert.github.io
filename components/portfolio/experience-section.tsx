@@ -22,6 +22,25 @@ const achievements = [
   },
 ]
 
+const experienceFacts = [
+  {
+    label: "운영 환경",
+    value: "최대 3,300명 규모 그룹웨어 서비스",
+  },
+  {
+    label: "핵심 이슈",
+    value: "Deadlock, 트랜잭션 충돌, 느린 쿼리",
+  },
+  {
+    label: "개선 방식",
+    value: "원인 분석 후 구조와 흐름을 함께 수정",
+  },
+  {
+    label: "강점",
+    value: "단순 수정이 아닌 재발 방지 중심 접근",
+  },
+]
+
 export function ExperienceSection() {
   return (
     <section id="experience" className="py-24 scroll-mt-24">
@@ -58,25 +77,15 @@ export function ExperienceSection() {
               ))}
             </div>
           </div>
-          <div className="grid gap-3 sm:grid-cols-3">
-            <div className="rounded-2xl bg-white/45 px-4 py-4">
-              <p className="text-xs font-semibold tracking-[0.16em] text-foreground/55">담당 범위</p>
-              <p className="mt-2 text-sm leading-6 text-foreground/80">
-                그룹웨어 유지보수, 운영 이슈 분석, 사용자 문의 기반 개선
-              </p>
-            </div>
-            <div className="rounded-2xl bg-white/45 px-4 py-4">
-              <p className="text-xs font-semibold tracking-[0.16em] text-foreground/55">주요 문제</p>
-              <p className="mt-2 text-sm leading-6 text-foreground/80">
-                장애 대응, Deadlock, 트랜잭션 이슈, 느린 조회 구간
-              </p>
-            </div>
-            <div className="rounded-2xl bg-white/45 px-4 py-4">
-              <p className="text-xs font-semibold tracking-[0.16em] text-foreground/55">기여 방식</p>
-              <p className="mt-2 text-sm leading-6 text-foreground/80">
-                문제를 좁히고 원인을 정리한 뒤 구조와 흐름을 개선했습니다.
-              </p>
-            </div>
+          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+            {experienceFacts.map((fact) => (
+              <div key={fact.label} className="rounded-2xl bg-white/45 px-4 py-4">
+                <p className="text-xs font-semibold tracking-[0.16em] text-foreground/55">
+                  {fact.label}
+                </p>
+                <p className="mt-2 text-sm leading-6 text-foreground/80">{fact.value}</p>
+              </div>
+            ))}
           </div>
           <p className="text-sm leading-relaxed text-muted-foreground">
             그룹웨어 플랫폼 유지보수와 운영을 담당하며, 최대 3,300명 규모 사용자 환경에서 발생하는

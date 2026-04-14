@@ -98,6 +98,19 @@ export default async function ProjectDetailPage({
                 </Button>
               )}
 
+              {project.links?.[0] && (
+                <Button
+                  asChild
+                  variant="outline"
+                  className="rounded-full glass-card border-0 hover:bg-white/80"
+                >
+                  <a href={project.links[0].href} target="_blank" rel="noopener noreferrer">
+                    <ArrowUpRight className="w-4 h-4" />
+                    문서 보기
+                  </a>
+                </Button>
+              )}
+
               <Button
                 asChild
                 className="rounded-full bg-foreground text-background hover:bg-foreground/90"
@@ -339,6 +352,33 @@ export default async function ProjectDetailPage({
                       구현 구조와 커밋 이력, 실제 코드 흐름은 GitHub 저장소에서 자세히 확인할 수
                       있습니다.
                     </p>
+
+                    {project.links && project.links.length > 0 && (
+                      <div className="mt-5 space-y-3">
+                        <p className="text-xs font-semibold tracking-[0.16em] text-foreground/55">
+                          참고 자료
+                        </p>
+                        {project.links.map((link) => (
+                          <a
+                            key={link.label}
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block rounded-2xl border border-white/30 bg-white/45 px-4 py-4 transition-colors hover:bg-white/60"
+                          >
+                            <div className="flex items-start justify-between gap-3">
+                              <div>
+                                <p className="text-sm font-semibold text-foreground">{link.label}</p>
+                                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                                  {link.description}
+                                </p>
+                              </div>
+                              <ArrowUpRight className="mt-0.5 h-4 w-4 shrink-0 text-foreground/70" />
+                            </div>
+                          </a>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

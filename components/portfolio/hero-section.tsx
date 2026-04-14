@@ -22,7 +22,7 @@ export function HeroSection() {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm font-medium text-foreground/80">
           <Sparkles className="w-4 h-4 text-primary" />
-          <span>운영 이슈 해결 중심의 백엔드 개발자</span>
+          <span>장애 대응 · 병목 분석 · 구조 개선 중심</span>
         </div>
 
         {/* Name */}
@@ -32,12 +32,16 @@ export function HeroSection() {
         
         {/* Title */}
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground/90">
-          서비스 안정성을 높이는 백엔드 개발자
+          {portfolio.role}
         </h2>
         
         {/* Description */}
         <p className="text-lg sm:text-xl text-muted-foreground max-w-xl leading-relaxed">
           {portfolio.headline}입니다. {portfolio.summary}
+        </p>
+        <p className="max-w-xl text-sm sm:text-base leading-relaxed text-foreground/75">
+          운영 환경에서 문제를 빠르게 좁히고, 원인을 구조적으로 정리해 재발 가능성까지 낮추는
+          방식으로 백엔드를 다뤄왔습니다.
         </p>
 
         <div className="grid gap-3 sm:grid-cols-3">

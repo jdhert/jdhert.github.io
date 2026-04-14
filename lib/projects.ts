@@ -15,6 +15,12 @@ export interface ProjectFact {
   value: string
 }
 
+export interface ProjectLink {
+  label: string
+  href: string
+  description: string
+}
+
 export interface Project {
   slug: string
   title: string
@@ -24,6 +30,7 @@ export interface Project {
   color: string
   bgColor: string
   tech: string[]
+  badges: string[]
   facts: ProjectFact[]
   overview: string
   details: ProjectDetailItem[]
@@ -33,6 +40,7 @@ export interface Project {
   imageAlt?: string
   github: string
   serviceUrl?: string
+  links?: ProjectLink[]
   size: "large" | "medium"
 }
 
@@ -46,6 +54,7 @@ export const projects: Project[] = [
     color: "text-primary",
     bgColor: "bg-primary/10",
     tech: ["TypeScript", "RAG", "pgvector", "Gemini"],
+    badges: ["개인", "RAG", "배포", "운영 검증"],
     facts: [
       { label: "기간", value: "2026.03 - 2026.04" },
       { label: "인원", value: "개인 프로젝트" },
@@ -92,6 +101,18 @@ export const projects: Project[] = [
     imageAlt: "CS-ChatBot 프로젝트 화면",
     github: "https://github.com/jdhert/CS-ChatBot",
     serviceUrl: "https://csbotservice.com",
+    links: [
+      {
+        label: "README",
+        href: "https://github.com/jdhert/CS-ChatBot/blob/main/README.md",
+        description: "RAG 구조, 운영 평가 지표, 배포 아키텍처를 확인할 수 있습니다.",
+      },
+      {
+        label: "개요 문서",
+        href: "https://github.com/jdhert/CS-ChatBot/blob/main/docs/CS-ChatBot_%EA%B0%9C%EC%9A%94.pdf",
+        description: "프로젝트 목적과 구현 방향을 요약한 개요 문서입니다.",
+      },
+    ],
     size: "large",
   },
   {
@@ -103,6 +124,7 @@ export const projects: Project[] = [
     color: "text-accent",
     bgColor: "bg-accent/10",
     tech: ["Next.js", "Spring Boot", "PostgreSQL", "WebSocket"],
+    badges: ["개인", "Full-stack", "WebSocket", "커뮤니티"],
     facts: [
       { label: "기간", value: "2026.02 - 2026.03" },
       { label: "인원", value: "개인 프로젝트" },
@@ -148,6 +170,18 @@ export const projects: Project[] = [
     imageSrc: "/projects/scenehive-detail.png",
     imageAlt: "SceneHive 프로젝트 화면",
     github: "https://github.com/jdhert/SceneHive",
+    links: [
+      {
+        label: "README",
+        href: "https://github.com/jdhert/SceneHive/blob/main/README.md",
+        description: "서비스 구조, 핵심 기능, 데이터 모델을 정리한 문서입니다.",
+      },
+      {
+        label: "프로젝트 가이드",
+        href: "https://github.com/jdhert/SceneHive/blob/main/PROJECT_GUIDE.md",
+        description: "디렉터리 구조와 세부 설계를 더 깊게 볼 수 있는 가이드입니다.",
+      },
+    ],
     size: "medium",
   },
   {
@@ -159,6 +193,7 @@ export const projects: Project[] = [
     color: "text-chart-4",
     bgColor: "bg-chart-4/10",
     tech: ["Spring", "Vue", "MySQL"],
+    badges: ["5인 팀", "팀장", "지도 API", "커뮤니티"],
     facts: [
       { label: "기간", value: "2024.04 - 2024.06" },
       { label: "인원", value: "5인 팀 프로젝트" },
@@ -204,6 +239,23 @@ export const projects: Project[] = [
     imageSrc: "/projects/pet-public-detail.png",
     imageAlt: "Pet-Public 프로젝트 메인 화면",
     github: "https://github.com/jdhert/Pet-Public",
+    links: [
+      {
+        label: "README",
+        href: "https://github.com/jdhert/Pet-Public/blob/master/README.md",
+        description: "기능 범위와 사용 기술, 배포 주소를 확인할 수 있습니다.",
+      },
+      {
+        label: "Wiki",
+        href: "https://github.com/jdhert/Pet-Public/wiki",
+        description: "팀 프로젝트 진행 과정과 추가 자료를 볼 수 있습니다.",
+      },
+      {
+        label: "PPT",
+        href: "https://www.canva.com/design/DAGAtHJ__6E/w_r6gat_Xpq1i0Re05Ka5A/edit?utm_content=DAGAtHJ__6E&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
+        description: "프로젝트 소개 자료로 흐름과 기능 설명을 빠르게 확인할 수 있습니다.",
+      },
+    ],
     size: "medium",
   },
 ]

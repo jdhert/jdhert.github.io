@@ -1,6 +1,6 @@
 export const portfolio = {
   name: "박세한",
-  role: "Backend Developer",
+  role: "운영 이슈를 구조적으로 해결하는 백엔드 개발자",
   email: "kkuladong12@gmail.com",
   githubUrl: "https://github.com/jdhert",
   siteUrl: "https://jdhert.github.io",

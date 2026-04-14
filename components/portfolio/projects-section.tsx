@@ -75,6 +75,16 @@ export function ProjectsSection() {
                       <p className="text-sm text-muted-foreground leading-relaxed mt-2">
                         {project.summary}
                       </p>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {project.badges.map((badge) => (
+                          <span
+                            key={badge}
+                            className="rounded-full border border-white/45 bg-white/50 px-2.5 py-1 text-[11px] font-semibold tracking-[0.08em] text-foreground/70"
+                          >
+                            {badge}
+                          </span>
+                        ))}
+                      </div>
                       <p className="mt-3 text-sm leading-relaxed text-foreground/75">
                         {project.cardPoint}
                       </p>

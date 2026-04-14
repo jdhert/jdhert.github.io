@@ -10,6 +10,11 @@ export interface ProjectHighlight {
   value: string
 }
 
+export interface ProjectFact {
+  label: string
+  value: string
+}
+
 export interface Project {
   slug: string
   title: string
@@ -19,6 +24,7 @@ export interface Project {
   color: string
   bgColor: string
   tech: string[]
+  facts: ProjectFact[]
   overview: string
   details: ProjectDetailItem[]
   highlights: ProjectHighlight[]
@@ -40,6 +46,13 @@ export const projects: Project[] = [
     color: "text-primary",
     bgColor: "bg-primary/10",
     tech: ["TypeScript", "RAG", "pgvector", "Gemini"],
+    facts: [
+      { label: "기간", value: "2026.03 - 2026.04" },
+      { label: "인원", value: "개인 프로젝트" },
+      { label: "역할", value: "기획 · 개발 · 배포" },
+      { label: "담당", value: "RAG 검색 · 챗 UI · 운영 배포" },
+      { label: "성과", value: "Top1 37/37 · Smoke 4/4" },
+    ],
     overview:
       "사내 매뉴얼, FAQ, 운영 이력 데이터를 PostgreSQL + pgvector에 적재하고, Rule 기반 검색과 Vector Similarity를 함께 사용하는 하이브리드 RAG 챗봇으로 운영 문의 답변 흐름을 구축한 프로젝트입니다.",
     details: [
@@ -90,6 +103,13 @@ export const projects: Project[] = [
     color: "text-accent",
     bgColor: "bg-accent/10",
     tech: ["Next.js", "Spring Boot", "PostgreSQL", "WebSocket"],
+    facts: [
+      { label: "기간", value: "2026.02 - 2026.03" },
+      { label: "인원", value: "개인 프로젝트" },
+      { label: "역할", value: "기획 · Full-stack 개발" },
+      { label: "담당", value: "TMDB 연동 · 인증 · 실시간 채팅" },
+      { label: "성과", value: "탐색-커뮤니티 흐름 end-to-end 구현" },
+    ],
     overview:
       "TMDB 기반 영화/TV/인물 탐색에서 즐겨찾기, 영화 클럽 참여, 실시간 채팅, 명대사와 리뷰 기록까지 이어지는 커뮤니티 흐름을 Next.js 프론트엔드와 Spring Boot 백엔드로 구현한 프로젝트입니다.",
     details: [
@@ -139,6 +159,13 @@ export const projects: Project[] = [
     color: "text-chart-4",
     bgColor: "bg-chart-4/10",
     tech: ["Spring", "Vue", "MySQL"],
+    facts: [
+      { label: "기간", value: "2024.04 - 2024.06" },
+      { label: "인원", value: "5인 팀 프로젝트" },
+      { label: "역할", value: "팀장 · 개발" },
+      { label: "담당", value: "Q&A · 다이어리 · 장소 검색 흐름" },
+      { label: "성과", value: "소셜 로그인·지도·커뮤니티 기능 통합" },
+    ],
     overview:
       "반려동물과 함께하는 일상을 기록하고, 경험을 공유하며, 동반 가능한 장소를 탐색할 수 있도록 펫스타그램, Q&A, 액티비티, 다이어리, 마이페이지 기능을 구성한 팀 프로젝트입니다.",
     details: [

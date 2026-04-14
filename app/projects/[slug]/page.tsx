@@ -148,6 +148,20 @@ export default async function ProjectDetailPage({
                 </div>
               </div>
 
+              <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
+                {project.facts.map((fact) => (
+                  <div
+                    key={fact.label}
+                    className="rounded-2xl border border-white/45 bg-white/45 px-4 py-4 shadow-[0_12px_30px_rgba(255,255,255,0.18)]"
+                  >
+                    <p className="text-xs font-semibold tracking-[0.16em] text-foreground/55">
+                      {fact.label}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-foreground/80">{fact.value}</p>
+                  </div>
+                ))}
+              </div>
+
               <div className="grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
                 <div className="space-y-5">
                   <div

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { portfolio } from "@/lib/portfolio"
 
 const navItems = [
+  { name: "핵심 요약", href: "#highlights" },
   { name: "소개", href: "#about" },
   { name: "경험", href: "#experience" },
   { name: "기술 스택", href: "#skills" },

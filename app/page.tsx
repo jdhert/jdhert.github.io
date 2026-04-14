@@ -1,5 +1,6 @@
 import { Navigation, MobileNavigation } from "@/components/portfolio/navigation"
 import { HeroSection } from "@/components/portfolio/hero-section"
+import { HighlightsSection } from "@/components/portfolio/highlights-section"
 import { AboutSection } from "@/components/portfolio/about-section"
 import { ExperienceSection } from "@/components/portfolio/experience-section"
 import { SkillsSection } from "@/components/portfolio/skills-section"
@@ -35,6 +36,7 @@ export default function PortfolioPage() {
           
           {/* Right Column - Scrollable Content */}
           <main className="lg:w-[55%] lg:py-24 pt-8">
+            <HighlightsSection />
             <AboutSection />
             <ExperienceSection />
             <SkillsSection />

@@ -40,10 +40,6 @@ export function HeroSection() {
         <p className="text-lg sm:text-xl text-muted-foreground max-w-xl leading-relaxed">
           {portfolio.headline}입니다. {portfolio.summary}
         </p>
-        <p className="max-w-xl text-sm sm:text-base leading-relaxed text-foreground/75">
-          운영 환경에서 문제를 빠르게 좁히고, 원인을 구조적으로 정리해 재발 가능성까지 낮추는
-          방식으로 백엔드를 다뤄왔습니다.
-        </p>
 
         <div className="grid gap-3 sm:grid-cols-3">
           {portfolio.keyFacts.map((fact) => (
@@ -108,7 +104,7 @@ export function HeroSection() {
         <p className="text-sm text-muted-foreground">{portfolio.resumeRequestNote}</p>
 
         {/* Social Links */}
-        <div className="flex flex-wrap items-center gap-4 pt-6">
+        <div className="flex flex-wrap items-center gap-4 pt-4">
           <a 
             href={portfolio.githubUrl} 
             target="_blank" 

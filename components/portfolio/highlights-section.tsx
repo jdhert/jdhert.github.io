@@ -71,32 +71,11 @@ export function HighlightsSection() {
                     <Icon className="h-5 w-5 text-primary" />
                   </div>
                 </div>
-                <p className="mt-4 text-sm leading-7 text-muted-foreground">{card.description}</p>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">{card.description}</p>
               </BentoCard>
             )
           })}
         </div>
-
-        <BentoCard>
-          <div className="grid gap-6 lg:grid-cols-[0.82fr_1.18fr]">
-            <div>
-              <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
-                HOW I WORK
-              </p>
-              <h3 className="mt-3 text-xl font-bold text-foreground">
-                혼자 잘하는 개발자보다, 팀이 설명 가능한 상태를 만드는 개발자에 가깝습니다.
-              </h3>
-            </div>
-            <ul className="space-y-3 text-sm leading-7 text-muted-foreground sm:text-base">
-              {portfolio.workStyle.map((item) => (
-                <li key={item} className="flex gap-3">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </BentoCard>
       </div>
     </section>
   )

@@ -39,10 +39,10 @@ export function SkillsSection() {
           <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
             <div>
               <p className="text-xs font-semibold tracking-[0.18em] text-foreground/50">
-                SKILL CONTEXT
+                기술 활용 기준
               </p>
               <h3 className="mt-3 text-2xl font-bold text-foreground">
-                기술을 나열하기보다, 어디에 써봤는지와 어떤 문제에 연결했는지를 보여주고 싶습니다.
+                실무와 프로젝트에서 실제로 써본 기술 위주로 정리했습니다.
               </h3>
             </div>
 
@@ -91,14 +91,14 @@ export function SkillsSection() {
 
                 <div className="mt-5 rounded-2xl border border-white/45 bg-white/45 px-4 py-4">
                   <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
-                    HOW I USED IT
+                    활용 맥락
                   </p>
                   <p className="mt-2 text-sm leading-7 text-foreground/80">{category.evidence}</p>
                 </div>
 
                 <div className="mt-5">
                   <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
-                    RELATED WORK
+                    관련 경험
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {category.related.map((item) => (

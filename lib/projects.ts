@@ -21,6 +21,17 @@ export interface ProjectLink {
   description: string
 }
 
+export interface ProjectArchitectureNode {
+  name: string
+  description: string
+}
+
+export interface ProjectTroubleshootingItem {
+  issue: string
+  approach: string
+  outcome: string
+}
+
 export interface Project {
   slug: string
   title: string
@@ -34,8 +45,11 @@ export interface Project {
   badges: string[]
   facts: ProjectFact[]
   overview: string
+  architectureOverview: string
+  architectureNodes: ProjectArchitectureNode[]
   details: ProjectDetailItem[]
   highlights: ProjectHighlight[]
+  troubleshooting: ProjectTroubleshootingItem[]
   strengths: string[]
   imageSrc?: string
   imageAlt?: string
@@ -67,6 +81,22 @@ export const projects: Project[] = [
     ],
     overview:
       "사내 매뉴얼, FAQ, 운영 이력 데이터를 PostgreSQL + pgvector에 적재하고, Rule 기반 검색과 Vector Similarity를 함께 사용하는 하이브리드 RAG 챗봇으로 운영 문의 답변 흐름을 구축한 프로젝트입니다.",
+    architectureOverview:
+      "수집된 문서를 임베딩 청크 단위로 저장하고, 질의 시에는 Rule 기반 검색과 pgvector 유사도 검색을 결합한 뒤 LLM 응답으로 연결하는 흐름으로 구성했습니다.",
+    architectureNodes: [
+      {
+        name: "Document Ingestion",
+        description: "사내 매뉴얼, FAQ, 운영 이력을 청크 단위로 정리해 PostgreSQL + pgvector에 적재했습니다.",
+      },
+      {
+        name: "Hybrid Retrieval",
+        description: "질문 유형에 따라 Rule 검색과 Vector Similarity를 함께 사용해 관련 근거 후보를 좁혔습니다.",
+      },
+      {
+        name: "Answer Generation",
+        description: "검색 결과를 기반으로 Gemini 응답을 생성하고, 근거 문서와 함께 사용자에게 전달했습니다.",
+      },
+    ],
     details: [
       {
         label: "해결 과제",
@@ -93,6 +123,20 @@ export const projects: Project[] = [
       {
         label: "기대 효과",
         value: "반복 문의에 대해 근거 이력과 매뉴얼을 함께 제시해 담당자의 검색 시간을 줄이고 답변 일관성을 높일 수 있는 구조를 만들었습니다.",
+      },
+    ],
+    troubleshooting: [
+      {
+        issue: "유사도 검색만으로는 운영 표현이 다른 질문에서 근거 문서를 안정적으로 찾기 어려웠습니다.",
+        approach:
+          "정형 패턴이 뚜렷한 문의는 Rule 검색으로 먼저 보강하고, 그 외에는 벡터 검색을 함께 사용해 후보군을 구성했습니다.",
+        outcome: "검색 실패 케이스를 줄이면서 운영 질의셋 기준 Top1 성능을 안정적으로 확보했습니다.",
+      },
+      {
+        issue: "챗봇이 답변은 생성하더라도 실제 운영에 투입 가능한 수준인지 검증 기준이 부족했습니다.",
+        approach:
+          "smoke 테스트와 운영성 질의셋, 부정 질의 차단 케이스를 별도로 두어 배포 전후 품질을 확인할 수 있게 만들었습니다.",
+        outcome: "Smoke 4/4, Top1 37/37, 부정 질의 차단 13/13 결과로 서비스화 가능성을 설명할 수 있게 됐습니다.",
       },
     ],
     strengths: [
@@ -139,6 +183,22 @@ export const projects: Project[] = [
     ],
     overview:
       "TMDB 기반 영화/TV/인물 탐색에서 즐겨찾기, 영화 클럽 참여, 실시간 채팅, 명대사와 리뷰 기록까지 이어지는 커뮤니티 흐름을 Next.js 프론트엔드와 Spring Boot 백엔드로 구현한 프로젝트입니다.",
+    architectureOverview:
+      "외부 콘텐츠는 TMDB API에서 가져오고, 사용자 활동과 커뮤니티 데이터는 자체 백엔드와 PostgreSQL에 저장하는 구조로 역할을 분리했습니다.",
+    architectureNodes: [
+      {
+        name: "External Content",
+        description: "영화, TV, 인물 정보는 TMDB API에서 조회해 탐색 경험을 빠르게 구성했습니다.",
+      },
+      {
+        name: "Community Domain",
+        description: "클럽, 리뷰, 명대사, 즐겨찾기, 알림은 Spring Boot + PostgreSQL로 자체 관리했습니다.",
+      },
+      {
+        name: "Realtime Interaction",
+        description: "Workspace 내부 대화는 STOMP WebSocket 기반 채팅 흐름으로 연결했습니다.",
+      },
+    ],
     details: [
       {
         label: "해결 과제",
@@ -165,6 +225,20 @@ export const projects: Project[] = [
       {
         label: "기대 효과",
         value: "외부 API 기반 콘텐츠와 내부 커뮤니티 데이터를 분리해 관리하면서 서비스 확장에 필요한 도메인 구조를 경험했습니다.",
+      },
+    ],
+    troubleshooting: [
+      {
+        issue: "외부 TMDB 데이터와 내부 커뮤니티 데이터를 한 화면에서 다루다 보니 도메인 경계가 쉽게 흐려질 수 있었습니다.",
+        approach:
+          "탐색용 콘텐츠는 외부 데이터, 활동/참여 기록은 내부 데이터로 분리하고 각 API 책임을 명확히 나눴습니다.",
+        outcome: "콘텐츠 조회와 사용자 활동 로직이 섞이지 않아 기능 확장 시에도 구조를 유지하기 쉬워졌습니다.",
+      },
+      {
+        issue: "탐색, 클럽 참여, 실시간 채팅, 리뷰 작성이 이어지는 흐름에서 인증과 상태 연결이 끊기기 쉬웠습니다.",
+        approach:
+          "JWT/OAuth2 인증 흐름을 기준으로 페이지별 접근 상태를 맞추고, 실시간 채팅은 별도 Workspace 문맥 안에서 관리했습니다.",
+        outcome: "사용자 입장에서 탐색 이후 참여와 기록까지 자연스럽게 이어지는 end-to-end 흐름을 구성할 수 있었습니다.",
       },
     ],
     strengths: [
@@ -210,6 +284,22 @@ export const projects: Project[] = [
     ],
     overview:
       "반려동물과 함께하는 일상을 기록하고, 경험을 공유하며, 동반 가능한 장소를 탐색할 수 있도록 펫스타그램, Q&A, 액티비티, 다이어리, 마이페이지 기능을 구성한 팀 프로젝트입니다.",
+    architectureOverview:
+      "커뮤니티 기능은 Spring + MySQL 기반으로 관리하고, 위치 탐색 영역은 카카오맵 로드뷰와 공공 API를 결합해 사용자 행동 흐름에 맞게 붙였습니다.",
+    architectureNodes: [
+      {
+        name: "Community Features",
+        description: "펫스타그램, Q&A, 다이어리, 마이페이지 등 핵심 사용자 활동은 Spring + MySQL로 구현했습니다.",
+      },
+      {
+        name: "Location Search",
+        description: "장소 검색은 공공 API 데이터를 받아오고, 카카오맵/로드뷰로 시각적 탐색 흐름을 보강했습니다.",
+      },
+      {
+        name: "Team Delivery",
+        description: "팀장 역할로 기능 범위를 조율하며 화면 흐름과 담당 기능을 팀 단위로 나눠 진행했습니다.",
+      },
+    ],
     details: [
       {
         label: "해결 과제",
@@ -236,6 +326,20 @@ export const projects: Project[] = [
       {
         label: "기대 효과",
         value: "게시판 CRUD뿐 아니라 소셜 로그인, 지도·로드뷰, 공공 API 검색을 함께 다루며 실서비스형 기능 조합을 경험했습니다.",
+      },
+    ],
+    troubleshooting: [
+      {
+        issue: "커뮤니티 기능과 장소 탐색 기능이 분리되어 보이면 서비스가 단순 기능 모음처럼 느껴질 수 있었습니다.",
+        approach:
+          "사용자 여정을 기록, 질문, 장소 탐색으로 나누고 내비게이션과 기능 흐름을 그 순서에 맞춰 연결했습니다.",
+        outcome: "하나의 서비스 안에서 목적별 이동이 자연스럽게 이어지도록 사용자 흐름을 정리할 수 있었습니다.",
+      },
+      {
+        issue: "팀 프로젝트에서는 기능 구현뿐 아니라 범위 조율과 역할 분담이 흔히 병목이 됩니다.",
+        approach:
+          "팀장으로서 기능 우선순위와 담당 범위를 정리하고, Q&A/다이어리/장소 검색 흐름을 중심으로 개발 책임을 가져갔습니다.",
+        outcome: "커뮤니티, 소셜 로그인, 지도 API까지 포함한 기능 조합을 팀 단위로 완성할 수 있었습니다.",
       },
     ],
     strengths: [

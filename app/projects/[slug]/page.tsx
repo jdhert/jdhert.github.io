@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowLeft, ArrowUpRight, Github, Globe } from "lucide-react"
+import { ArrowLeft, ArrowUpRight, Boxes, Bug, Github, Globe } from "lucide-react"
 import { AnimatedBackground } from "@/components/portfolio/animated-background"
 import { MouseGradient } from "@/components/portfolio/mouse-gradient"
 import { BentoCard } from "@/components/portfolio/bento-grid"
@@ -393,6 +393,109 @@ export default async function ProjectDetailPage({
               </div>
             </div>
           </BentoCard>
+
+          <section className="space-y-4">
+            <div className="flex items-center justify-between gap-4">
+              <h2 className="text-sm font-semibold tracking-[0.16em] text-primary">
+                아키텍처와 트러블슈팅
+              </h2>
+              <span className="text-sm text-muted-foreground">
+                {project.architectureNodes.length}개 구성 요소 · {project.troubleshooting.length}개 해결 사례
+              </span>
+            </div>
+
+            <div className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+              <BentoCard className="h-full p-6">
+                <div className="flex items-start gap-3">
+                  <div className="rounded-2xl bg-primary/10 p-3">
+                    <Boxes className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
+                      ARCHITECTURE
+                    </p>
+                    <h3 className="mt-2 text-xl font-semibold text-foreground">
+                      이 프로젝트를 어떤 구조로 풀었는지
+                    </h3>
+                  </div>
+                </div>
+
+                <p className="mt-5 text-sm leading-7 text-muted-foreground">
+                  {project.architectureOverview}
+                </p>
+
+                <div className="mt-6 space-y-3">
+                  {project.architectureNodes.map((node, index) => (
+                    <div
+                      key={node.name}
+                      className="rounded-2xl border border-white/40 bg-white/45 px-4 py-4"
+                    >
+                      <div className="flex items-center justify-between gap-3">
+                        <p className="text-sm font-semibold text-foreground">{node.name}</p>
+                        <span className="text-xs font-semibold tracking-[0.16em] text-foreground/45">
+                          0{index + 1}
+                        </span>
+                      </div>
+                      <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                        {node.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </BentoCard>
+
+              <BentoCard className="h-full p-6">
+                <div className="flex items-start gap-3">
+                  <div className="rounded-2xl bg-accent/10 p-3">
+                    <Bug className="h-5 w-5 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
+                      TROUBLESHOOTING
+                    </p>
+                    <h3 className="mt-2 text-xl font-semibold text-foreground">
+                      구현하면서 실제로 부딪힌 문제와 해결 방식
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="mt-6 space-y-4">
+                  {project.troubleshooting.map((item, index) => (
+                    <div
+                      key={`${item.issue}-${index}`}
+                      className="rounded-[1.5rem] border border-white/40 bg-white/45 p-5"
+                    >
+                      <p className="text-xs font-semibold tracking-[0.16em] text-foreground/45">
+                        CASE 0{index + 1}
+                      </p>
+                      <div className="mt-3 space-y-3">
+                        <div>
+                          <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
+                            ISSUE
+                          </p>
+                          <p className="mt-1 text-sm leading-6 text-foreground/85">{item.issue}</p>
+                        </div>
+                        <div>
+                          <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
+                            APPROACH
+                          </p>
+                          <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                            {item.approach}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
+                            OUTCOME
+                          </p>
+                          <p className="mt-1 text-sm leading-6 text-foreground/80">{item.outcome}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </BentoCard>
+            </div>
+          </section>
 
           <section className="space-y-4">
             <div className="flex items-center justify-between gap-4">

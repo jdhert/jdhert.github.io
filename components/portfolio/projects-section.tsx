@@ -44,7 +44,7 @@ export function ProjectsSection() {
                     key={`${project.slug}-guide`}
                     className="rounded-[1.75rem] border border-white/45 bg-white/45 p-5 shadow-[0_16px_40px_rgba(255,255,255,0.16)]"
                   >
-                    <div className="grid gap-5 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.2fr)_minmax(220px,0.75fr)]">
+                    <div className="grid gap-5 2xl:grid-cols-[minmax(0,0.85fr)_minmax(0,1.2fr)_minmax(220px,0.75fr)]">
                       <div className="flex min-w-0 items-start gap-3">
                         <div className={`mt-0.5 rounded-2xl p-3 ${project.bgColor}`}>
                           <Icon className={`h-5 w-5 ${project.color}`} />
@@ -69,7 +69,7 @@ export function ProjectsSection() {
                             ))}
                           </div>
 
-                          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:hidden">
+                          <div className="mt-5 grid gap-3 sm:grid-cols-2 2xl:hidden">
                             {roleFact && (
                               <div className="rounded-2xl bg-white/55 px-4 py-4">
                                 <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
@@ -92,7 +92,7 @@ export function ProjectsSection() {
                             )}
                           </div>
 
-                          <div className="mt-5 flex flex-wrap gap-2 lg:hidden">
+                          <div className="mt-5 flex flex-wrap gap-2 2xl:hidden">
                             <Button
                               type="button"
                               size="sm"
@@ -129,7 +129,7 @@ export function ProjectsSection() {
                         </p>
                       </div>
 
-                      <div className="hidden lg:block">
+                      <div className="hidden 2xl:block">
                         <div className="grid gap-3">
                           {roleFact && (
                             <div className="rounded-2xl bg-white/55 px-4 py-4">

@@ -17,8 +17,8 @@ export function ProjectsSection() {
 
       <div className="space-y-4">
         <BentoCard highlight>
-          <div className="space-y-6">
-            <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+          <div className="space-y-5">
+            <div className="grid gap-4 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-end">
               <div>
                 <p className="text-xs font-semibold tracking-[0.18em] text-foreground/50">
                   PROJECT GUIDE
@@ -27,7 +27,7 @@ export function ProjectsSection() {
                   무엇을 보고 싶은지에 따라 먼저 볼 프로젝트가 다릅니다.
                 </h3>
               </div>
-              <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
+              <p className="max-w-xl text-sm leading-7 text-muted-foreground lg:justify-self-end">
                 채용 담당자나 협업 관점에서 바로 판단할 수 있도록, 각 프로젝트가 특히 잘 보여주는
                 포인트를 먼저 정리했습니다.
               </p>
@@ -42,57 +42,59 @@ export function ProjectsSection() {
                 return (
                   <div
                     key={`${project.slug}-guide`}
-                    className="rounded-[1.75rem] border border-white/45 bg-white/45 p-5 shadow-[0_16px_40px_rgba(255,255,255,0.16)]"
+                    className="rounded-[1.75rem] border border-white/45 bg-white/45 px-5 py-3.5 shadow-[0_16px_40px_rgba(255,255,255,0.16)]"
                   >
-                    <div className="grid gap-6 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)_minmax(240px,0.78fr)]">
+                    <div className="grid gap-4 xl:grid-cols-[minmax(220px,0.88fr)_minmax(0,1.08fr)_minmax(260px,0.92fr)] xl:items-start">
                       <div className="flex min-w-0 items-start gap-3">
                         <div className={`mt-0.5 rounded-2xl p-3 ${project.bgColor}`}>
                           <Icon className={`h-5 w-5 ${project.color}`} />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <div className="flex flex-wrap items-center gap-2">
-                            <h3 className="text-lg font-semibold leading-tight text-foreground">
-                              {project.title}
-                            </h3>
-                            <span className="rounded-full border border-white/45 bg-white/60 px-2.5 py-1 text-[11px] font-semibold tracking-[0.08em] text-foreground/65">
-                              {project.size === "large" ? "FEATURED" : "SELECTED"}
-                            </span>
-                          </div>
-                          <div className="mt-3 flex flex-wrap gap-2">
-                            {project.tech.slice(0, 3).map((tech) => (
-                              <span
-                                key={`${project.slug}-${tech}-guide`}
-                                className="rounded-full bg-secondary/75 px-2.5 py-1 text-[11px] font-semibold tracking-[0.06em] text-secondary-foreground"
-                              >
-                                {tech}
+                          <div className="space-y-2">
+                            <div className="flex flex-wrap items-center gap-2">
+                              <h3 className="text-lg font-semibold leading-tight text-foreground">
+                                {project.title}
+                              </h3>
+                              <span className="rounded-full border border-white/45 bg-white/60 px-2.5 py-1 text-[11px] font-semibold tracking-[0.08em] text-foreground/65">
+                                {project.size === "large" ? "FEATURED" : "SELECTED"}
                               </span>
-                            ))}
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                              {project.tech.slice(0, 3).map((tech) => (
+                                <span
+                                  key={`${project.slug}-${tech}-guide`}
+                                  className="rounded-full bg-secondary/75 px-2.5 py-1 text-[11px] font-semibold tracking-[0.06em] text-secondary-foreground"
+                                >
+                                  {tech}
+                                </span>
+                              ))}
+                            </div>
                           </div>
 
-                          <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:hidden">
+                          <div className="mt-4 grid gap-2 sm:grid-cols-2 xl:hidden">
                             {roleFact && (
-                              <div className="rounded-2xl bg-white/55 px-4 py-4">
-                                <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
+                              <div className="rounded-2xl bg-white/55 px-4 py-3">
+                                <p className="text-[11px] font-semibold tracking-[0.16em] text-foreground/45">
                                   ROLE
                                 </p>
-                                <p className="mt-2 text-sm leading-6 text-foreground/80">
+                                <p className="mt-1.5 text-sm leading-6 text-foreground/80">
                                   {roleFact.value}
                                 </p>
                               </div>
                             )}
                             {outcomeFact && (
-                              <div className="rounded-2xl bg-white/55 px-4 py-4">
-                                <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
+                              <div className="rounded-2xl bg-white/55 px-4 py-3">
+                                <p className="text-[11px] font-semibold tracking-[0.16em] text-foreground/45">
                                   OUTCOME
                                 </p>
-                                <p className="mt-2 text-sm leading-6 text-foreground/80">
+                                <p className="mt-1.5 text-sm leading-6 text-foreground/80">
                                   {outcomeFact.value}
                                 </p>
                               </div>
                             )}
                           </div>
 
-                          <div className="mt-5 flex flex-wrap gap-2 xl:hidden">
+                          <div className="mt-4 flex flex-wrap gap-2 xl:hidden">
                             <Button
                               type="button"
                               size="sm"
@@ -127,37 +129,12 @@ export function ProjectsSection() {
                         <p className="text-sm leading-7 text-muted-foreground">
                           {project.recommendedFor}
                         </p>
-                      </div>
 
-                      <div className="hidden xl:block">
-                        <div className="grid gap-3">
-                          {roleFact && (
-                            <div className="rounded-2xl bg-white/55 px-4 py-4">
-                              <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
-                                ROLE
-                              </p>
-                              <p className="mt-2 text-sm leading-6 text-foreground/80">
-                                {roleFact.value}
-                              </p>
-                            </div>
-                          )}
-                          {outcomeFact && (
-                            <div className="rounded-2xl bg-white/55 px-4 py-4">
-                              <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
-                                OUTCOME
-                              </p>
-                              <p className="mt-2 text-sm leading-6 text-foreground/80">
-                                {outcomeFact.value}
-                              </p>
-                            </div>
-                          )}
-                        </div>
-
-                        <div className="mt-5 flex flex-wrap gap-2">
+                        <div className="mt-4 hidden xl:flex xl:flex-wrap xl:gap-2">
                           <Button
                             type="button"
                             size="sm"
-                            className="rounded-full bg-foreground text-background hover:bg-foreground/90"
+                            className="rounded-full bg-foreground px-4 text-background hover:bg-foreground/90"
                             onClick={() => router.push(`/projects/${project.slug}`)}
                           >
                             상세 보기
@@ -177,6 +154,29 @@ export function ProjectsSection() {
                             </Button>
                           )}
                         </div>
+                      </div>
+
+                      <div className="hidden xl:grid xl:grid-cols-2 gap-2 self-start">
+                        {roleFact && (
+                          <div className="rounded-2xl bg-white/55 px-4 py-3">
+                            <p className="text-[11px] font-semibold tracking-[0.16em] text-foreground/45">
+                              ROLE
+                            </p>
+                            <p className="mt-1.5 text-sm leading-6 text-foreground/80">
+                              {roleFact.value}
+                            </p>
+                          </div>
+                        )}
+                        {outcomeFact && (
+                          <div className="rounded-2xl bg-white/55 px-4 py-3">
+                            <p className="text-[11px] font-semibold tracking-[0.16em] text-foreground/45">
+                              OUTCOME
+                            </p>
+                            <p className="mt-1.5 text-sm leading-6 text-foreground/80">
+                              {outcomeFact.value}
+                            </p>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>

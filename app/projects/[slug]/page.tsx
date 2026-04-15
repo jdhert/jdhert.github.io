@@ -20,6 +20,25 @@ import { portfolio } from "@/lib/portfolio"
 
 export const dynamicParams = false
 
+function compactText(text: string, maxLength: number) {
+  const normalized = text.replace(/\s+/g, " ").trim()
+
+  if (normalized.length <= maxLength) {
+    return normalized
+  }
+
+  const separators = ["입니다. ", "했습니다. ", "합니다. ", ". ", ", ", " · ", " / "]
+
+  for (const separator of separators) {
+    const cutIndex = normalized.lastIndexOf(separator, maxLength)
+    if (cutIndex > maxLength * 0.55) {
+      return normalized.slice(0, cutIndex + separator.trimEnd().length).trim()
+    }
+  }
+
+  return `${normalized.slice(0, maxLength).trimEnd()}...`
+}
+
 export function generateStaticParams() {
   return projects.map((project) => ({
     slug: project.slug,
@@ -82,8 +101,8 @@ export default async function ProjectDetailPage({
   }
 
   const Icon = project.icon
-  const primaryFacts = project.facts.slice(0, 3)
-  const secondaryFacts = project.facts.slice(3)
+  const metricFacts = [project.facts[4], project.facts[1], project.facts[0]].filter(Boolean)
+  const secondaryFacts = project.facts.slice(2, 4)
 
   return (
     <>
@@ -159,7 +178,7 @@ export default async function ProjectDetailPage({
                       {project.title}
                     </h1>
                     <p className="max-w-3xl text-lg leading-8 text-muted-foreground">
-                      {project.summary}
+                      {compactText(project.summary, 96)}
                     </p>
                   </div>
                 </div>
@@ -183,7 +202,7 @@ export default async function ProjectDetailPage({
 
               <div className="grid gap-3 lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.9fr)]">
                 <div className="grid gap-3 sm:grid-cols-3">
-                  {primaryFacts.map((fact) => (
+                  {metricFacts.map((fact) => (
                     <div
                       key={fact.label}
                       className="rounded-2xl border border-white/45 bg-white/45 px-4 py-4 shadow-[0_12px_30px_rgba(255,255,255,0.18)]"
@@ -191,7 +210,9 @@ export default async function ProjectDetailPage({
                       <p className="text-xs font-semibold tracking-[0.16em] text-foreground/55">
                         {fact.label}
                       </p>
-                      <p className="mt-2 text-sm leading-6 text-foreground/80">{fact.value}</p>
+                      <p className="mt-2 text-lg font-semibold leading-7 text-foreground/88">
+                        {fact.value}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -293,7 +314,9 @@ export default async function ProjectDetailPage({
                   <div className="grid gap-4 xl:grid-cols-[minmax(0,1.1fr)_minmax(280px,0.9fr)]">
                     <div className="rounded-[2rem] border border-white/45 bg-white/50 p-6 shadow-[0_16px_40px_rgba(255,255,255,0.18)]">
                       <p className="mb-3 text-sm font-semibold text-foreground/70">프로젝트 개요</p>
-                      <p className="text-base leading-7 text-foreground/82">{project.overview}</p>
+                      <p className="text-base leading-7 text-foreground/82">
+                        {compactText(project.overview, 140)}
+                      </p>
                     </div>
 
                     <div className="grid gap-3 sm:grid-cols-3 xl:grid-cols-1">
@@ -306,7 +329,7 @@ export default async function ProjectDetailPage({
                             {highlight.label}
                           </p>
                           <p className="mt-2 text-sm leading-6 text-foreground/78">
-                            {highlight.value}
+                            {compactText(highlight.value, 72)}
                           </p>
                         </div>
                       ))}
@@ -318,7 +341,7 @@ export default async function ProjectDetailPage({
                   <div className="rounded-[2rem] border border-white/40 bg-gradient-to-br from-white/45 to-white/20 p-6 lg:p-7">
                     <p className="text-sm font-semibold text-foreground/70">이 프로젝트에서 보여준 점</p>
                     <p className="mt-3 text-[15px] leading-7 text-muted-foreground">
-                      {project.cardPoint}
+                      {compactText(project.cardPoint, 86)}
                     </p>
 
                     <div className="mt-5 space-y-3">
@@ -330,7 +353,9 @@ export default async function ProjectDetailPage({
                           <span className="mt-0.5 inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-white/75 text-[11px] font-semibold text-foreground/60">
                             {index + 1}
                           </span>
-                          <p className="text-sm leading-6 text-foreground/80">{strength}</p>
+                          <p className="text-sm leading-6 text-foreground/80">
+                            {compactText(strength, 68)}
+                          </p>
                         </div>
                       ))}
                     </div>
@@ -424,7 +449,7 @@ export default async function ProjectDetailPage({
                 </div>
 
                 <p className="mt-5 text-sm leading-7 text-muted-foreground">
-                  {project.architectureOverview}
+                  {compactText(project.architectureOverview, 132)}
                 </p>
 
                 <div className="mt-5 space-y-3">
@@ -440,7 +465,7 @@ export default async function ProjectDetailPage({
                         </span>
                       </div>
                       <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                        {node.description}
+                        {compactText(node.description, 72)}
                       </p>
                     </div>
                   ))}
@@ -477,21 +502,25 @@ export default async function ProjectDetailPage({
                           <p className="text-[11px] font-semibold tracking-[0.16em] text-foreground/50">
                             ISSUE
                           </p>
-                          <p className="mt-1.5 text-sm leading-6 text-foreground/85">{item.issue}</p>
+                          <p className="mt-1.5 text-sm leading-6 text-foreground/85">
+                            {compactText(item.issue, 88)}
+                          </p>
                         </div>
                         <div>
                           <p className="text-[11px] font-semibold tracking-[0.16em] text-foreground/50">
                             APPROACH
                           </p>
                           <p className="mt-1.5 text-sm leading-6 text-muted-foreground">
-                            {item.approach}
+                            {compactText(item.approach, 88)}
                           </p>
                         </div>
                         <div>
                           <p className="text-[11px] font-semibold tracking-[0.16em] text-foreground/50">
                             OUTCOME
                           </p>
-                          <p className="mt-1.5 text-sm leading-6 text-foreground/80">{item.outcome}</p>
+                          <p className="mt-1.5 text-sm leading-6 text-foreground/80">
+                            {compactText(item.outcome, 88)}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -523,7 +552,9 @@ export default async function ProjectDetailPage({
                       <h3 className="text-base font-semibold text-foreground">{detail.label}</h3>
                     </div>
 
-                    <p className="text-sm leading-7 text-muted-foreground">{detail.text}</p>
+                    <p className="text-sm leading-7 text-muted-foreground">
+                      {compactText(detail.text, 108)}
+                    </p>
                   </div>
                 </BentoCard>
               ))}
@@ -555,7 +586,7 @@ export default async function ProjectDetailPage({
                 </div>
 
                 <p className="mt-5 text-sm leading-7 text-muted-foreground">
-                  {project.retrospective.reflection}
+                  {compactText(project.retrospective.reflection, 140)}
                 </p>
               </BentoCard>
 
@@ -575,7 +606,7 @@ export default async function ProjectDetailPage({
                 </div>
 
                 <p className="mt-5 text-sm leading-7 text-muted-foreground">
-                  {project.retrospective.nextStep}
+                  {compactText(project.retrospective.nextStep, 140)}
                 </p>
               </BentoCard>
             </div>

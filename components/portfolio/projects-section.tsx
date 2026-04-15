@@ -42,7 +42,7 @@ export function ProjectsSection() {
                 return (
                   <div
                     key={`${project.slug}-guide`}
-                    className="rounded-[1.75rem] border border-white/45 bg-white/45 px-5 py-3.5 shadow-[0_16px_40px_rgba(255,255,255,0.16)]"
+                    className="rounded-[1.75rem] border border-white/45 bg-white/45 px-4 py-4 shadow-[0_16px_40px_rgba(255,255,255,0.16)] sm:px-5"
                   >
                     <div className="grid gap-4 xl:grid-cols-[minmax(220px,0.88fr)_minmax(0,1.08fr)_minmax(260px,0.92fr)] xl:items-start">
                       <div className="flex min-w-0 items-start gap-3">
@@ -71,7 +71,11 @@ export function ProjectsSection() {
                             </div>
                           </div>
 
-                          <div className="mt-4 grid gap-2 sm:grid-cols-2 xl:hidden">
+                          <p className="mt-4 text-sm leading-7 text-muted-foreground xl:hidden">
+                            {project.recommendedFor}
+                          </p>
+
+                          <div className="mt-4 grid gap-2 md:grid-cols-2 xl:hidden">
                             {roleFact && (
                               <div className="rounded-2xl bg-white/55 px-4 py-3">
                                 <p className="text-[11px] font-semibold tracking-[0.16em] text-foreground/45">
@@ -125,7 +129,7 @@ export function ProjectsSection() {
                         </div>
                       </div>
 
-                      <div className="min-w-0">
+                      <div className="hidden min-w-0 xl:block">
                         <p className="text-sm leading-7 text-muted-foreground">
                           {project.recommendedFor}
                         </p>

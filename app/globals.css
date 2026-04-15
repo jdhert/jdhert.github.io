@@ -254,6 +254,95 @@
   animation: fade-in-up 0.6s ease-out forwards;
 }
 
+/* Hero intro animation */
+.hero-reveal {
+  opacity: 0;
+  transform: translateY(26px) scale(0.985);
+  filter: blur(10px);
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1) var(--hero-delay, 0ms),
+    transform 0.95s cubic-bezier(0.22, 1, 0.36, 1) var(--hero-delay, 0ms),
+    filter 0.9s ease var(--hero-delay, 0ms);
+}
+
+.hero-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+@keyframes hero-float-soft {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -12px, 0);
+  }
+}
+
+@keyframes hero-orbit {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.03);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes hero-orbit-dot {
+  0% {
+    transform: rotate(0deg) translateX(26px);
+  }
+  100% {
+    transform: rotate(360deg) translateX(26px);
+  }
+}
+
+@keyframes hero-pan {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scaleX(1);
+  }
+  50% {
+    transform: translate3d(36px, -10px, 0) scaleX(1.06);
+  }
+}
+
+.hero-float-soft {
+  animation: hero-float-soft 6.5s ease-in-out infinite;
+}
+
+.hero-orbit {
+  transform-origin: center;
+  animation: hero-orbit 18s linear infinite;
+}
+
+.hero-orbit-dot {
+  transform-origin: -78px center;
+  animation: hero-orbit-dot 12s linear infinite;
+}
+
+.hero-pan {
+  animation: hero-pan 9s ease-in-out infinite;
+}
+
+.hero-fact-card {
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s ease,
+    background-color 0.45s ease;
+}
+
+.hero-fact-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow:
+    0 16px 38px rgba(123, 92, 255, 0.1),
+    0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
 /* Blob animation */
 @keyframes blob {
   0%, 100% {
@@ -282,4 +371,31 @@
 .animate-blob-slow {
   animation: blob 12s ease-in-out infinite;
   animation-delay: 4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .gradient-bg,
+  .animate-float,
+  .animate-float-delayed,
+  .animate-float-slow,
+  .animate-blob,
+  .animate-blob-delayed,
+  .animate-blob-slow,
+  .hero-float-soft,
+  .hero-orbit,
+  .hero-orbit-dot,
+  .hero-pan {
+    animation: none !important;
+  }
+
+  .hero-reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
 }

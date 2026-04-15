@@ -41,8 +41,8 @@ export function SkillsSection() {
               <p className="text-xs font-semibold tracking-[0.18em] text-foreground/50">
                 기술 활용 기준
               </p>
-              <h3 className="mt-3 max-w-lg text-[clamp(1.9rem,2.3vw,2.5rem)] font-bold leading-[1.18] text-balance text-foreground">
-                실무와 프로젝트에서 실제로 써본 기술 위주로 정리했습니다.
+              <h3 className="mt-3 max-w-xl text-[clamp(1.55rem,1.9vw,2rem)] font-bold leading-[1.24] text-balance text-foreground">
+                실무와 프로젝트에서 활용한 기술을 정리했습니다.
               </h3>
             </div>
 

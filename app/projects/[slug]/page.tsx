@@ -1,7 +1,16 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowLeft, ArrowUpRight, Boxes, Bug, Github, Globe, Lightbulb, RotateCcw } from "lucide-react"
+import {
+  ArrowLeft,
+  ArrowUpRight,
+  Boxes,
+  Bug,
+  Github,
+  Globe,
+  Lightbulb,
+  RotateCcw,
+} from "lucide-react"
 import { AnimatedBackground } from "@/components/portfolio/animated-background"
 import { MouseGradient } from "@/components/portfolio/mouse-gradient"
 import { BentoCard } from "@/components/portfolio/bento-grid"
@@ -73,6 +82,8 @@ export default async function ProjectDetailPage({
   }
 
   const Icon = project.icon
+  const primaryFacts = project.facts.slice(0, 3)
+  const secondaryFacts = project.facts.slice(3)
 
   return (
     <>
@@ -80,7 +91,7 @@ export default async function ProjectDetailPage({
       <MouseGradient />
 
       <main className="relative z-10 min-h-screen px-6 py-12 lg:px-24">
-        <div className="mx-auto max-w-5xl space-y-8">
+        <div className="mx-auto max-w-6xl space-y-8">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <Button
               asChild
@@ -88,7 +99,7 @@ export default async function ProjectDetailPage({
               className="rounded-full glass-card border-0 hover:bg-white/80"
             >
               <Link href="/#projects">
-                <ArrowLeft className="w-4 h-4" />
+                <ArrowLeft className="h-4 w-4" />
                 프로젝트 목록으로
               </Link>
             </Button>
@@ -101,7 +112,7 @@ export default async function ProjectDetailPage({
                   className="rounded-full glass-card border-0 hover:bg-white/80"
                 >
                   <a href={project.serviceUrl} target="_blank" rel="noopener noreferrer">
-                    <Globe className="w-4 h-4" />
+                    <Globe className="h-4 w-4" />
                     서비스 보기
                   </a>
                 </Button>
@@ -114,7 +125,7 @@ export default async function ProjectDetailPage({
                   className="rounded-full glass-card border-0 hover:bg-white/80"
                 >
                   <a href={project.links[0].href} target="_blank" rel="noopener noreferrer">
-                    <ArrowUpRight className="w-4 h-4" />
+                    <ArrowUpRight className="h-4 w-4" />
                     문서 보기
                   </a>
                 </Button>
@@ -125,7 +136,7 @@ export default async function ProjectDetailPage({
                 className="rounded-full bg-foreground text-background hover:bg-foreground/90"
               >
                 <a href={project.github} target="_blank" rel="noopener noreferrer">
-                  <Github className="w-4 h-4" />
+                  <Github className="h-4 w-4" />
                   GitHub 보기
                 </a>
               </Button>
@@ -133,13 +144,13 @@ export default async function ProjectDetailPage({
           </div>
 
           <BentoCard highlight className="p-8 lg:p-10">
-            <div className="flex flex-col gap-8">
-              <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-                <div className="space-y-5">
+            <div className="space-y-7">
+              <div className="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_320px] lg:items-start">
+                <div className="space-y-4">
                   <div
                     className={`inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 ${project.bgColor}`}
                   >
-                    <Icon className={`w-4 h-4 ${project.color}`} />
+                    <Icon className={`h-4 w-4 ${project.color}`} />
                     <span className="text-sm font-medium text-foreground/80">프로젝트 상세</span>
                   </div>
 
@@ -147,21 +158,21 @@ export default async function ProjectDetailPage({
                     <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
                       {project.title}
                     </h1>
-                    <p className="max-w-3xl text-lg leading-relaxed text-muted-foreground">
+                    <p className="max-w-3xl text-lg leading-8 text-muted-foreground">
                       {project.summary}
                     </p>
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-white/40 bg-white/35 p-5">
+                <div className="rounded-[1.75rem] border border-white/40 bg-white/35 p-5">
                   <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-foreground/60">
-                    기술 스택
+                    Tech Stack
                   </p>
-                  <div className="flex max-w-sm flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="rounded-md bg-secondary/70 px-2.5 py-1 text-xs font-medium text-secondary-foreground"
+                        className="rounded-full bg-secondary/70 px-3 py-1.5 text-xs font-medium text-secondary-foreground"
                       >
                         {tech}
                       </span>
@@ -170,24 +181,40 @@ export default async function ProjectDetailPage({
                 </div>
               </div>
 
-              <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
-                {project.facts.map((fact) => (
-                  <div
-                    key={fact.label}
-                    className="rounded-2xl border border-white/45 bg-white/45 px-4 py-4 shadow-[0_12px_30px_rgba(255,255,255,0.18)]"
-                  >
-                    <p className="text-xs font-semibold tracking-[0.16em] text-foreground/55">
-                      {fact.label}
-                    </p>
-                    <p className="mt-2 text-sm leading-6 text-foreground/80">{fact.value}</p>
-                  </div>
-                ))}
+              <div className="grid gap-3 lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.9fr)]">
+                <div className="grid gap-3 sm:grid-cols-3">
+                  {primaryFacts.map((fact) => (
+                    <div
+                      key={fact.label}
+                      className="rounded-2xl border border-white/45 bg-white/45 px-4 py-4 shadow-[0_12px_30px_rgba(255,255,255,0.18)]"
+                    >
+                      <p className="text-xs font-semibold tracking-[0.16em] text-foreground/55">
+                        {fact.label}
+                      </p>
+                      <p className="mt-2 text-sm leading-6 text-foreground/80">{fact.value}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap gap-2 lg:justify-end">
+                  {secondaryFacts.map((fact) => (
+                    <div
+                      key={fact.label}
+                      className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/45 bg-white/40 px-4 py-2.5"
+                    >
+                      <span className="text-[11px] font-semibold tracking-[0.14em] text-foreground/50">
+                        {fact.label}
+                      </span>
+                      <span className="text-sm font-medium text-foreground/80">{fact.value}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <div className="grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
+              <div className="grid gap-5 lg:grid-cols-[minmax(0,1.08fr)_360px]">
                 <div className="space-y-5">
                   <div
-                    className={`self-start overflow-hidden rounded-[2rem] border border-white/40 bg-white/40 shadow-[0_30px_80px_rgba(0,0,0,0.08)] ${
+                    className={`overflow-hidden rounded-[2rem] border border-white/40 bg-white/40 shadow-[0_30px_80px_rgba(0,0,0,0.08)] ${
                       project.serviceUrl ? "group" : ""
                     }`}
                   >
@@ -222,7 +249,7 @@ export default async function ProjectDetailPage({
                               </div>
                               <span className="inline-flex items-center gap-1 text-sm font-medium text-white">
                                 Open
-                                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                               </span>
                             </div>
                           ) : (
@@ -249,136 +276,112 @@ export default async function ProjectDetailPage({
                           <div className="absolute bottom-0 left-1/3 h-32 w-32 rounded-full bg-chart-3/20 blur-3xl" />
                         </div>
                         <div className="relative">
-                          <div className="flex items-center justify-between gap-4">
-                            <p className="text-xs font-semibold tracking-[0.16em] text-foreground/55">
-                              {project.serviceUrl ? "SERVICE URL" : "프로젝트 미리보기"}
-                            </p>
-                            {project.serviceUrl && (
-                              <span className="inline-flex items-center gap-1 text-sm font-medium text-foreground/80">
-                                Open
-                                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                              </span>
-                            )}
-                          </div>
-                          <h2 className="mt-3 text-2xl font-semibold text-foreground">
-                            {project.title}
-                          </h2>
-                          {project.serviceUrl ? (
-                            <p className="mt-3 max-w-lg break-all text-sm leading-relaxed text-muted-foreground">
-                              {project.serviceUrl}
-                            </p>
-                          ) : (
-                            <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
-                              아직 상세 스크린샷이 없는 프로젝트입니다. 추후 실제 화면이나 흐름을
-                              추가하면 더 입체적으로 보여줄 수 있습니다.
-                            </p>
-                          )}
+                          <p className="text-xs font-semibold tracking-[0.16em] text-foreground/55">
+                            {project.serviceUrl ? "SERVICE URL" : "프로젝트 미리보기"}
+                          </p>
+                          <h2 className="mt-3 text-2xl font-semibold text-foreground">{project.title}</h2>
+                          <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
+                            {project.serviceUrl
+                              ? project.serviceUrl
+                              : "대표 이미지가 없는 프로젝트입니다. 구조와 구현 포인트 위주로 확인할 수 있도록 정리했습니다."}
+                          </p>
                         </div>
                       </div>
                     )}
                   </div>
 
-                  <div className="rounded-[2rem] border border-white/45 bg-white/50 p-6 shadow-[0_16px_40px_rgba(255,255,255,0.18)]">
-                    <p className="mb-4 text-sm font-semibold text-foreground/70">프로젝트 개요</p>
-                    <p className="text-[17px] font-medium leading-8 text-foreground/85">
-                      {project.overview}
-                    </p>
-                  </div>
+                  <div className="grid gap-4 xl:grid-cols-[minmax(0,1.1fr)_minmax(280px,0.9fr)]">
+                    <div className="rounded-[2rem] border border-white/45 bg-white/50 p-6 shadow-[0_16px_40px_rgba(255,255,255,0.18)]">
+                      <p className="mb-3 text-sm font-semibold text-foreground/70">프로젝트 개요</p>
+                      <p className="text-base leading-7 text-foreground/82">{project.overview}</p>
+                    </div>
 
-                  <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-1">
-                    {project.highlights.map((highlight) => (
-                      <div
-                        key={highlight.label}
-                        className="rounded-[1.75rem] border border-white/45 bg-gradient-to-br from-white/60 to-white/35 p-5 shadow-[0_16px_40px_rgba(255,255,255,0.16)]"
-                      >
-                        <p className="text-sm font-semibold text-foreground/70">
-                          {highlight.label}
-                        </p>
-                        <p className="mt-3 text-[15px] font-medium leading-7 text-foreground/80">
-                          {highlight.value}
-                        </p>
-                      </div>
-                    ))}
+                    <div className="grid gap-3 sm:grid-cols-3 xl:grid-cols-1">
+                      {project.highlights.map((highlight) => (
+                        <div
+                          key={highlight.label}
+                          className="rounded-[1.5rem] border border-white/45 bg-gradient-to-br from-white/60 to-white/35 p-4 shadow-[0_16px_40px_rgba(255,255,255,0.16)]"
+                        >
+                          <p className="text-[11px] font-semibold tracking-[0.16em] text-foreground/50">
+                            {highlight.label}
+                          </p>
+                          <p className="mt-2 text-sm leading-6 text-foreground/78">
+                            {highlight.value}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
-                <div className="h-fit rounded-[2rem] border border-white/40 bg-gradient-to-br from-white/45 to-white/20 p-6 lg:p-7">
-                  <p className="mb-3 text-sm font-semibold text-foreground/70">
-                    이 프로젝트에서 보여준 점
-                  </p>
-                  <p className="text-base leading-relaxed text-muted-foreground">
-                    {project.cardPoint}
-                  </p>
+                <div className="space-y-4">
+                  <div className="rounded-[2rem] border border-white/40 bg-gradient-to-br from-white/45 to-white/20 p-6 lg:p-7">
+                    <p className="text-sm font-semibold text-foreground/70">이 프로젝트에서 보여준 점</p>
+                    <p className="mt-3 text-[15px] leading-7 text-muted-foreground">
+                      {project.cardPoint}
+                    </p>
 
-                  <div className="mt-6 space-y-4">
-                    {project.strengths.map((strength, index) => (
-                      <div key={strength} className="rounded-2xl bg-white/45 px-4 py-4">
-                        <p className="text-xs font-semibold tracking-[0.16em] text-foreground/55">
-                          핵심 포인트 {index + 1}
-                        </p>
-                        <p className="mt-2 text-sm leading-relaxed text-foreground/80">
-                          {strength}
-                        </p>
-                      </div>
-                    ))}
+                    <div className="mt-5 space-y-3">
+                      {project.strengths.map((strength, index) => (
+                        <div
+                          key={strength}
+                          className="flex items-start gap-3 rounded-2xl border border-white/30 bg-white/40 px-4 py-3.5"
+                        >
+                          <span className="mt-0.5 inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-white/75 text-[11px] font-semibold text-foreground/60">
+                            {index + 1}
+                          </span>
+                          <p className="text-sm leading-6 text-foreground/80">{strength}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
-                  <div className="mt-6 rounded-2xl border border-white/35 bg-white/30 p-4">
+                  <div className="rounded-[2rem] border border-white/35 bg-white/30 p-5">
                     <p className="text-xs font-semibold tracking-[0.16em] text-foreground/55">
                       바로가기
                     </p>
 
-                    {project.serviceUrl && (
-                      <div className="mt-3 rounded-2xl border border-white/30 bg-white/45 p-4">
-                        <p className="text-xs font-semibold tracking-[0.16em] text-foreground/55">
-                          SERVICE URL
-                        </p>
-                        <a
-                          href={project.serviceUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group mt-3 inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-primary"
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {project.serviceUrl && (
+                        <Button
+                          asChild
+                          size="sm"
+                          variant="outline"
+                          className="rounded-full glass-card border-0 hover:bg-white/80"
                         >
-                          실제 서비스 바로가기
-                          <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                        </a>
-                        <p className="mt-2 break-all text-sm leading-relaxed text-muted-foreground">
-                          {project.serviceUrl}
-                        </p>
-                      </div>
-                    )}
+                          <a href={project.serviceUrl} target="_blank" rel="noopener noreferrer">
+                            <Globe className="h-4 w-4" />
+                            서비스
+                          </a>
+                        </Button>
+                      )}
 
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group mt-4 inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-primary"
-                    >
-                      저장소에서 코드 보기
-                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                    </a>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      구현 구조와 커밋 이력, 실제 코드 흐름은 GitHub 저장소에서 자세히 확인할 수
-                      있습니다.
-                    </p>
+                      <Button
+                        asChild
+                        size="sm"
+                        className="rounded-full bg-foreground text-background hover:bg-foreground/90"
+                      >
+                        <a href={project.github} target="_blank" rel="noopener noreferrer">
+                          <Github className="h-4 w-4" />
+                          GitHub
+                        </a>
+                      </Button>
+                    </div>
 
                     {project.links && project.links.length > 0 && (
-                      <div className="mt-5 space-y-3">
-                        <p className="text-xs font-semibold tracking-[0.16em] text-foreground/55">
-                          참고 자료
-                        </p>
+                      <div className="mt-5 grid gap-3">
                         {project.links.map((link) => (
                           <a
                             key={link.label}
                             href={link.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="block rounded-2xl border border-white/30 bg-white/45 px-4 py-4 transition-colors hover:bg-white/60"
+                            className="block rounded-2xl border border-white/30 bg-white/45 px-4 py-3.5 transition-colors hover:bg-white/60"
                           >
                             <div className="flex items-start justify-between gap-3">
                               <div>
                                 <p className="text-sm font-semibold text-foreground">{link.label}</p>
-                                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                                <p className="mt-1 text-sm leading-6 text-muted-foreground">
                                   {link.description}
                                 </p>
                               </div>
@@ -395,16 +398,16 @@ export default async function ProjectDetailPage({
           </BentoCard>
 
           <section className="space-y-4">
-            <div className="flex items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center justify-between gap-3">
               <h2 className="text-sm font-semibold tracking-[0.16em] text-primary">
                 아키텍처와 트러블슈팅
               </h2>
               <span className="text-sm text-muted-foreground">
-                {project.architectureNodes.length}개 구성 요소 · {project.troubleshooting.length}개 해결 사례
+                {project.architectureNodes.length}개 구조 요소 · {project.troubleshooting.length}개 해결 사례
               </span>
             </div>
 
-            <div className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="grid gap-4 lg:grid-cols-[1fr_1fr]">
               <BentoCard className="h-full p-6">
                 <div className="flex items-start gap-3">
                   <div className="rounded-2xl bg-primary/10 p-3">
@@ -424,7 +427,7 @@ export default async function ProjectDetailPage({
                   {project.architectureOverview}
                 </p>
 
-                <div className="mt-6 space-y-3">
+                <div className="mt-5 space-y-3">
                   {project.architectureNodes.map((node, index) => (
                     <div
                       key={node.name}
@@ -459,7 +462,7 @@ export default async function ProjectDetailPage({
                   </div>
                 </div>
 
-                <div className="mt-6 space-y-4">
+                <div className="mt-5 space-y-3">
                   {project.troubleshooting.map((item, index) => (
                     <div
                       key={`${item.issue}-${index}`}
@@ -468,26 +471,27 @@ export default async function ProjectDetailPage({
                       <p className="text-xs font-semibold tracking-[0.16em] text-foreground/45">
                         CASE 0{index + 1}
                       </p>
-                      <div className="mt-3 space-y-3">
+
+                      <div className="mt-3 grid gap-4 xl:grid-cols-3">
                         <div>
-                          <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
+                          <p className="text-[11px] font-semibold tracking-[0.16em] text-foreground/50">
                             ISSUE
                           </p>
-                          <p className="mt-1 text-sm leading-6 text-foreground/85">{item.issue}</p>
+                          <p className="mt-1.5 text-sm leading-6 text-foreground/85">{item.issue}</p>
                         </div>
                         <div>
-                          <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
+                          <p className="text-[11px] font-semibold tracking-[0.16em] text-foreground/50">
                             APPROACH
                           </p>
-                          <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                          <p className="mt-1.5 text-sm leading-6 text-muted-foreground">
                             {item.approach}
                           </p>
                         </div>
                         <div>
-                          <p className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
+                          <p className="text-[11px] font-semibold tracking-[0.16em] text-foreground/50">
                             OUTCOME
                           </p>
-                          <p className="mt-1 text-sm leading-6 text-foreground/80">{item.outcome}</p>
+                          <p className="mt-1.5 text-sm leading-6 text-foreground/80">{item.outcome}</p>
                         </div>
                       </div>
                     </div>
@@ -498,35 +502,28 @@ export default async function ProjectDetailPage({
           </section>
 
           <section className="space-y-4">
-            <div className="flex items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center justify-between gap-3">
               <h2 className="text-sm font-semibold tracking-[0.16em] text-primary">
                 구현 포인트
               </h2>
-              <span className="text-sm text-muted-foreground">
-                {project.details.length}개의 상세 포인트
-              </span>
+              <span className="text-sm text-muted-foreground">{project.details.length}개 핵심 포인트</span>
             </div>
 
-            <div className="grid gap-4 lg:grid-cols-3">
+            <div className="grid gap-3">
               {project.details.map((detail, index) => (
-                <BentoCard key={detail.label} className="h-full p-6">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="text-xs font-semibold tracking-[0.16em] text-foreground/50">
+                <BentoCard key={detail.label} className="p-5">
+                  <div className="grid gap-3 sm:grid-cols-[72px_minmax(0,160px)_minmax(0,1fr)] sm:items-start">
+                    <div className="flex items-center gap-3 sm:block">
+                      <span className="inline-flex h-8 min-w-8 items-center justify-center rounded-full bg-white/70 text-xs font-semibold tracking-[0.14em] text-foreground/55">
                         0{index + 1}
                       </span>
-                      <div
-                        className={`h-2.5 w-2.5 rounded-full ${project.bgColor.replace("/10", "")}`}
-                      />
                     </div>
+
                     <div>
-                      <h3 className="mb-2 text-lg font-semibold text-foreground">
-                        {detail.label}
-                      </h3>
-                      <p className="text-sm leading-relaxed text-muted-foreground">
-                        {detail.text}
-                      </p>
+                      <h3 className="text-base font-semibold text-foreground">{detail.label}</h3>
                     </div>
+
+                    <p className="text-sm leading-7 text-muted-foreground">{detail.text}</p>
                   </div>
                 </BentoCard>
               ))}
@@ -534,7 +531,7 @@ export default async function ProjectDetailPage({
           </section>
 
           <section className="space-y-4">
-            <div className="flex items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center justify-between gap-3">
               <h2 className="text-sm font-semibold tracking-[0.16em] text-primary">
                 회고와 다음 개선점
               </h2>

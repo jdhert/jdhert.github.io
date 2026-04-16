@@ -42,17 +42,17 @@ export function ProjectsSection() {
                 return (
                   <div
                     key={`${project.slug}-guide`}
-                    className="rounded-[1.75rem] border border-white/45 bg-white/45 px-4 py-4 shadow-[0_16px_40px_rgba(255,255,255,0.16)] sm:px-5"
+                    className="rounded-[1.6rem] border border-white/45 bg-white/45 px-4 py-4 shadow-[0_16px_40px_rgba(255,255,255,0.16)] sm:rounded-[1.75rem] sm:px-5"
                   >
                     <div className="grid gap-4 2xl:grid-cols-[minmax(220px,0.88fr)_minmax(0,1.08fr)_minmax(260px,0.92fr)] 2xl:items-start">
                       <div className="flex min-w-0 items-start gap-3">
-                        <div className={`mt-0.5 rounded-2xl p-3 ${project.bgColor}`}>
+                        <div className={`mt-0.5 rounded-[1.2rem] p-2.5 sm:rounded-2xl sm:p-3 ${project.bgColor}`}>
                           <Icon className={`h-5 w-5 ${project.color}`} />
                         </div>
                         <div className="min-w-0 flex-1">
                           <div className="space-y-2">
                             <div className="flex flex-wrap items-center gap-2">
-                              <h3 className="text-lg font-semibold leading-tight text-foreground">
+                              <h3 className="text-[1.08rem] font-semibold leading-tight text-foreground sm:text-lg">
                                 {project.title}
                               </h3>
                               <span className="rounded-full border border-white/45 bg-white/60 px-2.5 py-1 text-[11px] font-semibold tracking-[0.08em] text-foreground/65">
@@ -71,38 +71,38 @@ export function ProjectsSection() {
                             </div>
                           </div>
 
-                          <p className="mt-4 text-sm leading-7 text-muted-foreground 2xl:hidden">
+                          <p className="mt-3.5 text-[13.5px] leading-7 text-muted-foreground sm:mt-4 sm:text-sm 2xl:hidden">
                             {project.recommendedFor}
                           </p>
 
-                          <div className="mt-4 grid gap-2 md:grid-cols-2 2xl:hidden">
+                          <div className="mt-3.5 grid gap-2 sm:grid-cols-2 2xl:hidden">
                             {roleFact && (
-                              <div className="rounded-2xl bg-white/55 px-4 py-3">
+                              <div className="rounded-[1.1rem] bg-white/55 px-3.5 py-3 sm:rounded-2xl sm:px-4">
                                 <p className="text-[11px] font-semibold tracking-[0.16em] text-foreground/45">
                                   ROLE
                                 </p>
-                                <p className="mt-1.5 text-sm leading-6 text-foreground/80">
+                                <p className="mt-1.5 text-[13.5px] leading-6 text-foreground/80 sm:text-sm">
                                   {roleFact.value}
                                 </p>
                               </div>
                             )}
                             {outcomeFact && (
-                              <div className="rounded-2xl bg-white/55 px-4 py-3">
+                              <div className="rounded-[1.1rem] bg-white/55 px-3.5 py-3 sm:rounded-2xl sm:px-4">
                                 <p className="text-[11px] font-semibold tracking-[0.16em] text-foreground/45">
                                   OUTCOME
                                 </p>
-                                <p className="mt-1.5 text-sm leading-6 text-foreground/80">
+                                <p className="mt-1.5 text-[13.5px] leading-6 text-foreground/80 sm:text-sm">
                                   {outcomeFact.value}
                                 </p>
                               </div>
                             )}
                           </div>
 
-                          <div className="mt-4 flex flex-wrap gap-2 2xl:hidden">
+                          <div className="mt-3.5 flex flex-wrap gap-2 2xl:hidden">
                             <Button
                               type="button"
                               size="sm"
-                              className="rounded-full bg-foreground text-background hover:bg-foreground/90"
+                              className="h-10 rounded-full bg-foreground px-4 text-background hover:bg-foreground/90"
                               onClick={() => router.push(`/projects/${project.slug}`)}
                             >
                               상세 보기
@@ -113,7 +113,7 @@ export function ProjectsSection() {
                                 type="button"
                                 size="sm"
                                 variant="outline"
-                                className="rounded-full glass-card border-0 hover:bg-white/80"
+                                className="h-10 rounded-full glass-card border-0 px-4 hover:bg-white/80"
                               >
                                 <a
                                   href={project.serviceUrl}

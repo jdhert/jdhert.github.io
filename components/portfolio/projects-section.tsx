@@ -28,7 +28,7 @@ export function ProjectsSection() {
                 </h3>
               </div>
               <p className="max-w-xl text-sm leading-7 text-muted-foreground lg:justify-self-end">
-                채용 담당자나 협업 관점에서 바로 판단할 수 있도록, 각 프로젝트가 특히 잘 보여주는
+                보는 관점에 따라 빠르게 흐름을 파악할 수 있도록, 각 프로젝트가 특히 잘 보여주는
                 포인트를 먼저 정리했습니다.
               </p>
             </div>

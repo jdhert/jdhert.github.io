@@ -44,7 +44,7 @@ export function ProjectsSection() {
                     key={`${project.slug}-guide`}
                     className="rounded-[1.75rem] border border-white/45 bg-white/45 px-4 py-4 shadow-[0_16px_40px_rgba(255,255,255,0.16)] sm:px-5"
                   >
-                    <div className="grid gap-4 xl:grid-cols-[minmax(220px,0.88fr)_minmax(0,1.08fr)_minmax(260px,0.92fr)] xl:items-start">
+                    <div className="grid gap-4 2xl:grid-cols-[minmax(220px,0.88fr)_minmax(0,1.08fr)_minmax(260px,0.92fr)] 2xl:items-start">
                       <div className="flex min-w-0 items-start gap-3">
                         <div className={`mt-0.5 rounded-2xl p-3 ${project.bgColor}`}>
                           <Icon className={`h-5 w-5 ${project.color}`} />
@@ -71,11 +71,11 @@ export function ProjectsSection() {
                             </div>
                           </div>
 
-                          <p className="mt-4 text-sm leading-7 text-muted-foreground xl:hidden">
+                          <p className="mt-4 text-sm leading-7 text-muted-foreground 2xl:hidden">
                             {project.recommendedFor}
                           </p>
 
-                          <div className="mt-4 grid gap-2 md:grid-cols-2 xl:hidden">
+                          <div className="mt-4 grid gap-2 md:grid-cols-2 2xl:hidden">
                             {roleFact && (
                               <div className="rounded-2xl bg-white/55 px-4 py-3">
                                 <p className="text-[11px] font-semibold tracking-[0.16em] text-foreground/45">
@@ -98,7 +98,7 @@ export function ProjectsSection() {
                             )}
                           </div>
 
-                          <div className="mt-4 flex flex-wrap gap-2 xl:hidden">
+                          <div className="mt-4 flex flex-wrap gap-2 2xl:hidden">
                             <Button
                               type="button"
                               size="sm"
@@ -129,12 +129,12 @@ export function ProjectsSection() {
                         </div>
                       </div>
 
-                      <div className="hidden min-w-0 xl:block">
+                      <div className="hidden min-w-0 2xl:block">
                         <p className="text-sm leading-7 text-muted-foreground">
                           {project.recommendedFor}
                         </p>
 
-                        <div className="mt-4 hidden xl:flex xl:flex-wrap xl:gap-2">
+                        <div className="mt-4 hidden 2xl:flex 2xl:flex-wrap 2xl:gap-2">
                           <Button
                             type="button"
                             size="sm"
@@ -160,7 +160,7 @@ export function ProjectsSection() {
                         </div>
                       </div>
 
-                      <div className="hidden xl:grid xl:grid-cols-2 gap-2 self-start">
+                      <div className="hidden 2xl:grid 2xl:grid-cols-2 gap-2 self-start">
                         {roleFact && (
                           <div className="rounded-2xl bg-white/55 px-4 py-3">
                             <p className="text-[11px] font-semibold tracking-[0.16em] text-foreground/45">

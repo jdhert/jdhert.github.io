@@ -267,6 +267,7 @@ export const projects: Project[] = [
     imageSrc: "/projects/scenehive-detail.png",
     imageAlt: "SceneHive 프로젝트 화면",
     github: "https://github.com/jdhert/SceneHive",
+    serviceUrl: "http://158.180.74.119/",
     links: [
       {
         label: "README",

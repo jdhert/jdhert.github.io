@@ -486,7 +486,7 @@ export default async function ProjectDetailPage({
                       TROUBLESHOOTING
                     </p>
                     <h3 className="mt-2 text-[1.55rem] font-bold leading-tight text-foreground">
-                      구현하면서 실제로 부딪힌 문제와 해결 방식
+                      문제 해결 요약
                     </h3>
                   </div>
                 </div>
@@ -495,35 +495,36 @@ export default async function ProjectDetailPage({
                   {project.troubleshooting.map((item, index) => (
                     <div
                       key={`${item.issue}-${index}`}
-                      className="rounded-[1.5rem] border border-white/40 bg-white/45 p-5"
+                      className="rounded-[1.5rem] border border-white/40 bg-white/45 px-4 py-4 sm:px-5"
                     >
-                      <p className="text-[11px] font-semibold tracking-[0.16em] text-foreground/42">
-                        CASE 0{index + 1}
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <p className="text-[11px] font-semibold tracking-[0.16em] text-foreground/42">
+                          CASE 0{index + 1}
+                        </p>
+                        <span className="rounded-full bg-white/55 px-3 py-1 text-[11px] font-semibold text-foreground/54">
+                          해결 사례
+                        </span>
+                      </div>
+
+                      <p className="mt-3 text-[15px] font-semibold leading-7 text-foreground/88">
+                        {compactText(item.issue, 58)}
                       </p>
 
-                      <div className="mt-3 grid gap-4 xl:grid-cols-3">
-                        <div>
+                      <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                        <div className="rounded-2xl bg-white/45 px-3.5 py-3">
                           <p className="text-[10px] font-semibold tracking-[0.18em] text-foreground/44">
-                            ISSUE
-                          </p>
-                          <p className="mt-1.5 text-[13.5px] font-medium leading-6 text-foreground/86">
-                            {compactText(item.issue, 88)}
-                          </p>
-                        </div>
-                        <div>
-                          <p className="text-[10px] font-semibold tracking-[0.18em] text-foreground/44">
-                            APPROACH
+                            해결 방향
                           </p>
                           <p className="mt-1.5 text-[13px] leading-6 text-muted-foreground">
-                            {compactText(item.approach, 88)}
+                            {compactText(item.approach, 48)}
                           </p>
                         </div>
-                        <div>
+                        <div className="rounded-2xl bg-white/45 px-3.5 py-3">
                           <p className="text-[10px] font-semibold tracking-[0.18em] text-foreground/44">
-                            OUTCOME
+                            결과
                           </p>
-                          <p className="mt-1.5 text-[13.5px] font-medium leading-6 text-foreground/82">
-                            {compactText(item.outcome, 88)}
+                          <p className="mt-1.5 text-[13px] font-medium leading-6 text-foreground/80">
+                            {compactText(item.outcome, 48)}
                           </p>
                         </div>
                       </div>
